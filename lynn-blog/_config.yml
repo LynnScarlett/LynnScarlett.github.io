@@ -80,7 +80,6 @@ theme: indigo
 deploy:
   type: git
   repo: https://github.com/LynnScarlett/LynnScarlett.github.io.git
-  branch: master
 
 #prism_plugin
 
