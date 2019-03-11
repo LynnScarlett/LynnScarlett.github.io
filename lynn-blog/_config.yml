@@ -92,4 +92,5 @@ search:
 	path: search.xml
 	field: all
 
-google_analytics: UA-100496831-1
+google_analytics: true
+google_analytics: UA-100496831-2
