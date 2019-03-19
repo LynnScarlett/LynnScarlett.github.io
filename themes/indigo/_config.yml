@@ -21,9 +21,9 @@ menu:
   github:
     url: https://github.com/LynnScarlett
     target: _blank
-  # link:
-  #   text: About
-  #   url: /about
+  link:
+    text: About
+    url: /about
 
 # 你的头像url
 avatar: /img/avatar.jpg
@@ -147,7 +147,7 @@ canonical: false
 since_year: 2015
 
 # 用户页面中作者相关的描述性文字，如不需要设为 false
-about: 用户页面中作者相关的描述性文字，如不需要设为 false
+about: 朱耀华，前端开发工程师。北京航空航天大学软件学院 2018 届本科毕业生。目前就职于北京国双科技有限公司。算法|前端|主机游戏|哲学|偏左|Apple|吉他|肖邦|李斯特|《士兵突击》|《城南旧事》
 
 # “不蒜子”访问量统计，详见 http://ibruce.info/2015/04/04/busuanzi/
 visit_counter:
