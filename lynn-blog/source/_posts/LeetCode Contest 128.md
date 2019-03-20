@@ -1,5 +1,5 @@
 ---
-title: LeetCode Contest 127
+title: LeetCode Contest 128
 date: 2019-03-20 09:18:54
 categories:
   - Algorithm
@@ -123,4 +123,4 @@ var shipWithinDays = function(weights, D) {
 思路：
 
 1. 遍历（超时）
-2. 排列组合，详见：[discuss](<https://leetcode.com/problems/numbers-with-repeated-digits/discuss/257281/Java-O(1)-0ms-beats-all>)
+2. 排列组合，详见：[discuss](https://leetcode.com/problems/numbers-with-repeated-digits/discuss/257281/Java-O%281%29-0ms-beats-all)
