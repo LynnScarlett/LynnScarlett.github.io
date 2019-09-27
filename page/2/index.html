@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta property="og:type" content="website">
+<meta property="og:title" content="用代码做画笔">
+<meta property="og:url" content="http://lynnjs.com/page/2/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用代码做画笔">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">用代码做画笔</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header index-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">用代码做画笔</h1>
+        <h5 class="subtitle">
+            
+                童言无忌
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+<div class="container body-wrap">
+
+    <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-跨域和CORS" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-09-02 17:50:21" datetime="2018-09-02T09:50:21.000Z" itemprop="datePublished">2018-09-02</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqy2002jv8fyevwq93vy/">跨域和CORS</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        跨域和CORS最近的一个项目在对接的时候，会报出以下错误：
+
+OPTIONS * 401()Failed to load *: Response to preflight request doesn’t pass access conreol check : No ‘Access-Conrtrl-Allow-Origin’ header is present on the requested resoutce. Origin ‘http://localhost:10001&#39; is not allowed access.
+
+直译过来是 OPTIONS 请求错误，response 的 header 里面没有 ‘Access-Conrtrl-Allow-Origin’字段。
+如果在开发过程中看到这个错误的话就可以直接截图给后端让他改了（虽然产生原因在浏览器……
+    
+
+        <a href="/ck11ywqy2002jv8fyevwq93vy/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-深入理解this" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-26 21:47:00" datetime="2018-08-26T13:47:00.000Z" itemprop="datePublished">2018-08-26</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxq001sv8fy9fguevym/">深入理解 this</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        深入理解 this这篇文章主要参考《你不知道的 JavaScript》的第2章—this全面解析
+首先说结论：
+
+this 实际上是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。
+
+本文使用了大量代码来说明，请耐心阅读。
+    
+
+        <a href="/ck11ywqxq001sv8fy9fguevym/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Note/">Note</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/this/">this</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-读《JavaScript专家编程》" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-22 20:02:50" datetime="2018-08-22T12:02:50.000Z" itemprop="datePublished">2018-08-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxt0020v8fy79mhmgo5/">读《JavaScript专家编程》</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        读《JavaScript 专家编程》《JavaScript 专家编程》这本书刚开始读的时候有种能读一个月的错觉。但是实际上不到一周时间就读完了，原因在于这本书有点“头重脚轻”，前面讲的挺透彻，越到后面越放飞自我……再加上年代久远，有些工具已经不适用了，而且其中的一些有关于测试的内容还是在软件工程类别的书里深入了解吧。
+第 1 章 对象和原型对象概述
+configurable：设置为 fals...
+    
+
+        <a href="/ck11ywqxt0020v8fy79mhmgo5/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software-Engineering/">Software Engineering</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-数值的表示" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-17 08:33:27" datetime="2018-08-17T00:33:27.000Z" itemprop="datePublished">2018-08-17</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机组成原理/">计算机组成原理</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxi001av8fy5k6qn8ox/">数值的表示</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        数值的表示
+本文首先发布于国双前端
+
+先上代码
+123// JavaSctipt// 0.30000000000000004console.log(0.1 + 0.2)
+如果你百度一下，就会知道几乎所有语言都会面临浮点数的精度问题，想要了解 IEEE754，要先了解计算机内部的定点数表示法。
+定点数以八位机器数举例
+原码1210  =&gt; 0000 1010-10 =&gt; 1000 ...
+    
+
+        <a href="/ck11ywqxi001av8fy5k6qn8ox/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IEEE754/">IEEE754</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-数据结构基础：KMP算法" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-16 19:13:26" datetime="2018-08-16T11:13:26.000Z" itemprop="datePublished">2018-08-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/数据结构-算法/">数据结构/算法</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxl001gv8fy8s25d2bu/">数据结构与算法基础——KMP</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        数据结构与算法基础 —— KMPKMP 是一种优化的模式匹配算法，区别于暴力模式匹配算法 O(mn) 的时间复杂度，KMP通过优化回溯问题，其时间复杂度可以优化至 O(m+n)。
+朴素的模式匹配算法
+                
+                    
+                    
+                
+                kmp1
+...
+    
+
+        <a href="/ck11ywqxl001gv8fy8s25d2bu/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/KMP/">KMP</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-MpVue探坑日记" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-15 22:05:22" datetime="2018-08-15T14:05:22.000Z" itemprop="datePublished">2018-08-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqwi0005v8fyzunqhrk5/">MpVue探坑日记</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        MpVue 踩坑日记近日将原有的原生小程序迁移到 Vue 技术栈中，遂采用mpvue进行代码迁移和重构。建议将官方文档看一遍之后能避开大部分坑。
+img 标签img 标签的 src 属性无法指向相对路径，需要用绝对路径代替。详见：GitHub
+tabbartabbar中的图标设置，需要将图片文件放在/static中才可以正常引用。详见：GitHub
+wx:指令转 v-指令v-for微信小程序...
+    
+
+        <a href="/ck11ywqwi0005v8fyzunqhrk5/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MpVue/">MpVue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-工作心得-第肆周" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-05 11:28:26" datetime="2018-08-05T03:28:26.000Z" itemprop="datePublished">2018-08-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxf0016v8fyf8u2ubhf/">工作心得#第肆周</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        工作心得 #第四周正则表达式正则表达式在春天求职的时候就有学过，但是一直都没有扎实地记住。这周又重新仔细看了一遍 =&gt; 这篇文章，果然还是不能功利地学习啊……
+在学习的时候，我把正则表达式的元素分成两类， 字符类型和字符数量。字符类型分为匹配字符和匹配位置。字符数量分为 0,1,n 次。还有关于分组什么的单独学习吧。
+Chrome Dev Tools用 JS 刷 LeetCode 的...
+    
+
+        <a href="/ck11ywqxf0016v8fyf8u2ubhf/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-读《构建之法：现代软件工程》-2" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-22 11:43:38" datetime="2018-07-22T03:43:38.000Z" itemprop="datePublished">2018-07-22</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxz002dv8fybqvfbt2p/">读《构建之法：现代软件工程》 #2</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        《构建之法：现代软件工程》 #2Agree8.5 功能的定位和优先级这个老师上课的时候有详细讲过，关于“惊喜”“核心功能”和“基本功能”随投资力度和产品质量变化而增长的趋势。
+12.1.1 用户体验的第一印象
+5W1H 原则：Who、When、Where、What、Why、How
+谁是你的目标用户？
+他们会在什么时候使用你的产品？
+目标用户会在哪里和你的产品交互？
+你的产品是什么？用户期待...
+    
+
+        <a href="/ck11ywqxz002dv8fybqvfbt2p/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software-Engineering/">Software Engineering</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-读《社会契约论》-1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-20 21:39:45" datetime="2018-07-20T13:39:45.000Z" itemprop="datePublished">2018-07-20</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxw0028v8fyce5kq38g/">读《社会契约论》 #1</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        读《社会契约论》去年考研的时候才算是真真正正地学过一次哲学，但是仅仅从一个角度（马克思主义）来进行学习的。所以有关于哲学方面的问题仅做摘抄，不做深入讨论。
+本书是由李平沤译、商务印书馆出版的，《社会契约论》——Amazon.cn。
+网上还有何兆武版，有机会再读。
+译者前言
+卢梭的《社会契约论》探讨的是政治权力的原理，它的主旨是为人民民主主权的建立奠定理论基础。
+“我把我的一生献给真理”——卢...
+    
+
+        <a href="/ck11ywqxw0028v8fyce5kq38g/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/哲学/">哲学</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-读《构建之法：现代软件工程》-1" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-15 18:56:31" datetime="2018-07-15T10:56:31.000Z" itemprop="datePublished">2018-07-15</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/ck11ywqxy002bv8fygxmizeen/">读《构建之法：现代软件工程》 #1</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        《构建之法——现代软件工程》 #1刚刚入职，想通过一本书快速地复习软件工程，来熟悉工作中的敏捷开发流程。或许能为团队在流程规范化上尽一份力。
+在阅读的时候随时在书上做标记，分别有以下含义：
+Agree Notice Warning/Question Disagree
+
+计划用四周时间完成阅读和笔记。
+Agree1.2.3 软件工程的知识领域 P14没有银弹：
+
+“不会有任何单一软件工程上的突...
+    
+
+        <a href="/ck11ywqxy002bv8fygxmizeen/" class="post-more waves-effect waves-button">
+            阅读全文…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software-Engineering/">Software Engineering</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+    </ul>
+
+    
+<nav id="page-nav">
+    <div class="inner">
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    </div>
+</nav>
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/page/2/&title=用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/page/2/&title=用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/page/2/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=用代码做画笔&url=http://lynnjs.com/page/2/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/page/2/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAAAAAAZai4+AAABW0lEQVR42u3aQQ6DMAxEUe5/6XRbqbWZsVOkxj+rCkryWGAbk+uSx3obn8ejf0ZXbRuwYB3EWumIWPpi0Tw3dFiwRrKU6fKQUZsnPA4LFix5Oj3PwoIFay8rT736tbBgwaoVzfqL66O1PCxYR7Bqr6C13z/pb8GC9eesZQ4l3eZNKGkVWLCGsfQHuJbI9TQMC9ZkllvO5su4H2bC24MFaxirs1FAWcYtu+3IBAvWEay89VNLt7Vw86V2gAVrGKvzbOpBxDgLC9Ywlk7p91rt5i8sWLDcXlSjsL6JXrBgDWN1NgcoIUBpP8GCBUspcN0gUgsfsGBNYxW3Auh3bDZ8YcGayersi9NLYeMLjztgwTqIpTeD3EawEiCkt2pYsMaw9E5Ov1yWUjUsWLDkBpNb/tp7kWDBgiW3ejuldmiABWsky90wl5e/mz+uwII1gFUrhd0b2NzZggXrHNYLPFrFbfyCVswAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

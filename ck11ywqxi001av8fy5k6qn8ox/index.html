@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>数值的表示 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="IEEE754">
+    <meta name="description" content="数值的表示 本文首先发布于国双前端  先上代码 123// JavaSctipt// 0.30000000000000004console.log(0.1 + 0.2) 如果你百度一下，就会知道几乎所有语言都会面临浮点数的精度问题，想要了解 IEEE754，要先了解计算机内部的定点数表示法。 定点数以八位机器数举例 原码1210  =&amp;gt; 0000 1010-10 =&amp;gt; 1000 101">
+<meta name="keywords" content="IEEE754">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值的表示">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="数值的表示 本文首先发布于国双前端  先上代码 123// JavaSctipt// 0.30000000000000004console.log(0.1 + 0.2) 如果你百度一下，就会知道几乎所有语言都会面临浮点数的精度问题，想要了解 IEEE754，要先了解计算机内部的定点数表示法。 定点数以八位机器数举例 原码1210  =&amp;gt; 0000 1010-10 =&amp;gt; 1000 101">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数值的表示">
+<meta name="twitter:description" content="数值的表示 本文首先发布于国双前端  先上代码 123// JavaSctipt// 0.30000000000000004console.log(0.1 + 0.2) 如果你百度一下，就会知道几乎所有语言都会面临浮点数的精度问题，想要了解 IEEE754，要先了解计算机内部的定点数表示法。 定点数以八位机器数举例 原码1210  =&amp;gt; 0000 1010-10 =&amp;gt; 1000 101">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">数值的表示</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">数值的表示</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-17T00:33:27.000Z" itemprop="datePublished" class="page-time">
+  2018-08-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机组成原理/">计算机组成原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数值的表示"><span class="post-toc-number">1.</span> <span class="post-toc-text">数值的表示</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#定点数"><span class="post-toc-number">2.</span> <span class="post-toc-text">定点数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#原码"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">原码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#补码"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">补码</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#浮点数"><span class="post-toc-number">3.</span> <span class="post-toc-text">浮点数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IEEE754"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">IEEE754</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#舍入策略"><span class="post-toc-number">4.</span> <span class="post-toc-text">舍入策略</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#不同语言的输出"><span class="post-toc-number">5.</span> <span class="post-toc-text">不同语言的输出</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#浮点数比较"><span class="post-toc-number">6.</span> <span class="post-toc-text">浮点数比较</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考链接</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数值的表示" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">数值的表示</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-17 08:33:27" datetime="2018-08-17T00:33:27.000Z" itemprop="datePublished">2018-08-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/计算机组成原理/">计算机组成原理</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="数值的表示"><a href="#数值的表示" class="headerlink" title="数值的表示"></a>数值的表示</h1><blockquote>
+<p>本文首先发布于<a href="https://fe-home.github.io/" target="_blank" rel="noopener">国双前端</a></p>
+</blockquote>
+<p>先上代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JavaSctipt</span></span><br><span class="line"><span class="comment">// 0.30000000000000004</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">0.1</span> + <span class="number">0.2</span>)</span><br></pre></td></tr></table></figure>
+<p>如果你百度一下，就会知道几乎所有语言都会面临浮点数的精度问题，想要了解 IEEE754，要先了解计算机内部的定点数表示法。</p>
+<h1 id="定点数"><a href="#定点数" class="headerlink" title="定点数"></a>定点数</h1><p>以八位机器数举例</p>
+<h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>  =&gt; <span class="number">0000</span> <span class="number">1010</span></span><br><span class="line"><span class="number">-10</span> =&gt; <span class="number">1000</span> <span class="number">1010</span></span><br></pre></td></tr></table></figure>
+<p>原码就是把数值直接用二进制表示出来，正负号用末位 0，1 来表示。<br>原码有诸多弊端，比如：数值的减法不能用加法来计算。在十进制中 10-10 和 10+(-10)是等效的，但是在原码表示法的机器数运算中，10+(-10)却得到了 1001 0100 的结果，显然不等于 0 。在计算机内部，处理运算是用与或非门来控制的，加减法分别用两套电路有些浪费资源，我们能否用加法电路来实现减法呢？<br>其次，0 和-0 在原码中竟然是不同的表示法，但是这对运算并没有帮助，反而浪费了一个表示位置。</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>  =&gt; <span class="number">0000</span> <span class="number">1010</span></span><br><span class="line"><span class="number">-10</span> =&gt; <span class="number">1111</span> <span class="number">0110</span></span><br></pre></td></tr></table></figure>
+<p>补码的正数和原码一样，但是负数采用原码的“取反加一”，也就是说，想要得到-10，首先把符号位确定为 1，然后写出 10 的原码表示，将其各个位置取反加一，即得到了该原码的补码。补码的求相反数同理。</p>
+<p>此时 10+(-10)和 10-10 的操作统一了，同时也没有了+0 和-0 的区别。计算机内部运算一般采用补码来进行，感兴趣的可以了解一下定点数/浮点数的乘法/除法，仅用移位和加法运算即可完成。</p>
+<p>补码的移位要注意一点，算术右移的时候正数补 0 负数补 1 。</p>
+<p>移码、反码此处不涉及，了解即可。</p>
+<h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p>为了扩大数的表示范围，可以采用“科学计数法”来表示大数或者小数。比如-2000 0000 就可以表示成</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-1 * 2 * 10 ^ 7</span><br></pre></td></tr></table></figure>
+<p>如果我们提前约定好了底数 10，那么我们表示这个数只需要三个信息，负号、2、7 ，转换成 2 进制就是 1 10 0111 比我们单独存储-20000000 要节省很多空间</p>
+<p>由于 2 进制的限制，计算机内部这个约定好的底数是 2。</p>
+<h2 id="IEEE754"><a href="#IEEE754" class="headerlink" title="IEEE754"></a>IEEE754</h2><p>目前计算机内部表示浮点数的一个标准就是 IEEE754，以 32 位计算机举例，表示 1100 0111 为 1 1000 0101 10001110000000000000000<br>乍一看可能觉得这种表示法更复杂了，其实无论在精度还是在表示数的范围，IEEE754 都是很优秀的。<br>在 IEEE754 中，底数为 2，用 1 位表示符号，8 位表示阶码，也就是上文中的 1000 0101，为了表示 2 的负数次方，阶码采用移码，都加上 127，这样负数的阶码也可以表示出来了，23 位原码表示尾数。<br>关于尾数这里要注意一点，由于 2 进制的有效数字第一位一定是 1，所以尾数的前面省略了一个 1 不写，用 23 位的尾数表示了 24 位的值，在手动转换的时候要自己补上。</p>
+<p>说了这么多还是没有直接解答浮点数的精度问题，但是看过了以上之后，你会更容易理解。<br>首先计算机没有办法精确地表示 0.1 和 0.2 等等，因为通过 2 次幂来控制移位，计算机只能精确表示出 0.5、0.25、0.125、0.0625 等等，这些数是无论如何也不能表示出 0.1 这样的数的，只能随着尾数长度的增加而无限接近。而在计算机存储这样的数的时候就会用到舍入策略：</p>
+<h1 id="舍入策略"><a href="#舍入策略" class="headerlink" title="舍入策略"></a>舍入策略</h1><p>IEEE 列出了四种不同的舍入方法：</p>
+<blockquote>
+<ul>
+<li>舍入到最接近：舍入到最接近，在一样接近的情况下偶数优先（Ties To Even，这是默认的舍入方式）：会将结果舍入为最接近且可以表示的值，但是当存在两个数一样接近的时候，则取其中的偶数（在二进制中式以 0 结尾的）。</li>
+<li>朝+∞ 方向舍入：会将结果朝正无限大的方向舍入。</li>
+<li>朝-∞ 方向舍入：会将结果朝负无限大的方向舍入。</li>
+<li>朝 0 方向舍入：会将结果朝 0 的方向舍入。</li>
+</ul>
+</blockquote>
+<p>举个栗子<br>假如我们都采用朝+∞ 方向舍入，保留一位小数，那么 0.41 会入到 0.5，0.41+0.41 在计算机中就会计算成 1.（仅仅是假设，实际计算机精度大得多）<br>而在我们 let a = 0.3 的时候会把 0.3 转换成 2 进制存储进来，再进行读取的时候，由于它和 0.3 的差比机器内部最大舍入误差小，所以再进行输出的时候就会正常输出 0.3，在进行 0.1+0.2 的时候由于这种舍入误差的累积，导致了输出结果不等于 0.3 。</p>
+<h1 id="不同语言的输出"><a href="#不同语言的输出" class="headerlink" title="不同语言的输出"></a>不同语言的输出</h1><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%f"</span>,<span class="number">0.1</span>+<span class="number">0.2</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// 0.300000</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(<span class="number">0.1</span>+<span class="number">0.2</span>);</span><br><span class="line">    <span class="comment">// 0.30000000000000004</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># python</span></span><br><span class="line"><span class="keyword">print</span> <span class="number">0.1</span>+<span class="number">0.2</span></span><br><span class="line"><span class="comment"># 0.3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// php</span></span><br><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="number">0.1</span>+<span class="number">0.2</span></span><br><span class="line">  <span class="comment">// 0.3</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ruby</span></span><br><span class="line">puts <span class="number">0</span>.<span class="number">1</span>+<span class="number">0</span>.<span class="number">2</span></span><br><span class="line"><span class="comment"># 0.30000000000000004</span></span><br></pre></td></tr></table></figure>
+<p>不同语言由于在输出长度方面有区别，所以最后的 4 可能会被截断。</p>
+<h1 id="浮点数比较"><a href="#浮点数比较" class="headerlink" title="浮点数比较"></a>浮点数比较</h1><p>在日常使用中一般不建议浮点数进行比较，一种比较的方法是：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">abs</span>(a - b) ＜ <span class="number">1e-8</span></span><br><span class="line"><span class="comment">// 自行设置精度</span></span><br></pre></td></tr></table></figure>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a href="https://zh.wikipedia.org/zh-hans/IEEE_754" target="_blank" rel="noopener">IEEE 754_wikipedia</a><br><a href="https://www.amazon.cn/dp/B01N03IQK4/ref=sr_1_1?ie=UTF8&amp;qid=1534470551&amp;sr=8-1&amp;keywords=%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">深入理解计算机系统(原书第 3 版)</a><br><a href="https://www.amazon.cn/dp/B00HTIEY94/ref=sr_1_4?ie=UTF8&amp;qid=1534470571&amp;sr=8-4&amp;keywords=%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86" target="_blank" rel="noopener">计算机组成原理-唐朔飞</a><br><a href="https://zhuanlan.zhihu.com/p/33494597" target="_blank" rel="noopener">js 中浮点数的表示及计算–IEEE 754</a><br><a href="https://www.imooc.com/article/23518" target="_blank" rel="noopener">原码补码反码移位</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.431Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxi001av8fy5k6qn8ox/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IEEE754/">IEEE754</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&title=《数值的表示》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&title=《数值的表示》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数值的表示》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxt0020v8fy79mhmgo5/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">读《JavaScript专家编程》</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxl001gv8fy8s25d2bu/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据结构与算法基础——KMP</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&title=《数值的表示》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&title=《数值的表示》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《数值的表示》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxi001av8fy5k6qn8ox/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACI0lEQVR42u3a0W6DMAwFUP7/p9nrpqn02qabSE6e0LpCDpUs2/FxxOv8tnr///v61T3zp5QXBgbGYxnn5eoxrreew5K9YWBg7MNINpGE4PxbvTu8/DsGBgZGa0NJInj9LAwMDIwJI9loL9XDwMDAmBSxSYGap3r/VotjYGA8kNFrnP3N9UfONzAwMB7FOIsrCY6TUH62FgYGxtqMPMDlzbLe+EX1oBQDA2MfRrXdXy0yqw21fMjjze+AgYGxEOP6g7yhlm8iCbK9lh8GBsYOjDyAJoGyuqFeMoqBgbEbIy9TJwF3crfy74CBgbEEY5K69Q5B81Bb+BYGBsbSjN5QRf7gPGW862gBAwNjVUb1YdWgnGx08iIwMDD2YUyuq038KqzQaMPAwFiOkR8AVFtm95bHhVocAwNjA0avoJ2XoNUDiR93w8DAWJpRjWC9h1Xvf0MIxsDAWI6RD6omZWc+kJqnqlFKioGBsQGjFwSrY6b5UGz5yBMDA2MDRp7w9dr9+evoDXlgYGDsxpgcDCThtffi3uwKAwNjG0b1ACBv9+eYpBV4THp+GBgYj2KcxZXcNB/XyAvd6HfAwMBYlFENc73GfS+I3zXkgYGBsQYj2eJdR5K9V4aBgYHRG/a6TgonQbmHxMDAwMiPEhNeL4mMmm4YGBgYxTQuCbjXrbe8qYeBgbEDIylie6MSnyh3MTAwdmNMJjV6rbEkHFcHOzAwMBZlfAFAEyLgNMIz2gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

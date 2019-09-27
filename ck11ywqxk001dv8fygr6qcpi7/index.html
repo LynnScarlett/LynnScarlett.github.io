@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>从零开始 node（三）：多进程和集群 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="从零开始 node（三）：多进程和集群在我们日常开发中，对于写好的 node 项目，使用node app.js即可启动。但是在大型项目，并发要求较高的情况下，单一的 node 进程不足以应对。 这篇博客从多进程和集群稳定性两个角度来分析 node 项目走向集群的原理。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始 node（三）：多进程和集群">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="从零开始 node（三）：多进程和集群在我们日常开发中，对于写好的 node 项目，使用node app.js即可启动。但是在大型项目，并发要求较高的情况下，单一的 node 进程不足以应对。 这篇博客从多进程和集群稳定性两个角度来分析 node 项目走向集群的原理。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始 node（三）：多进程和集群">
+<meta name="twitter:description" content="从零开始 node（三）：多进程和集群在我们日常开发中，对于写好的 node 项目，使用node app.js即可启动。但是在大型项目，并发要求较高的情况下，单一的 node 进程不足以应对。 这篇博客从多进程和集群稳定性两个角度来分析 node 项目走向集群的原理。">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">从零开始 node（三）：多进程和集群</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">从零开始 node（三）：多进程和集群</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-17T11:37:58.000Z" itemprop="datePublished" class="page-time">
+  2018-10-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#从零开始-node（三）：多进程和集群"><span class="post-toc-number">1.</span> <span class="post-toc-text">从零开始 node（三）：多进程和集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多进程"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">多进程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#集群"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">集群</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#负载均衡"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">负载均衡</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#平滑重启"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">平滑重启</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#状态共享"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">状态共享</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-从零开始 node（三）：多进程" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">从零开始 node（三）：多进程和集群</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-17 19:37:58" datetime="2018-10-17T11:37:58.000Z" itemprop="datePublished">2018-10-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="从零开始-node（三）：多进程和集群"><a href="#从零开始-node（三）：多进程和集群" class="headerlink" title="从零开始 node（三）：多进程和集群"></a>从零开始 node（三）：多进程和集群</h1><p>在我们日常开发中，对于写好的 node 项目，使用<code>node app.js</code>即可启动。但是在大型项目，并发要求较高的情况下，单一的 node 进程不足以应对。</p>
+<p>这篇博客从多进程和集群稳定性两个角度来分析 node 项目走向集群的原理。</p>
+<a id="more"></a>
+<h2 id="多进程"><a href="#多进程" class="headerlink" title="多进程"></a>多进程</h2><p>Node 提供了 child_process 模块来创建子进程，通过调用 child_process.fork()来实现进程的复制。这种模式叫做<code>Master-Worker模式</code>，也叫作主从模式。主进程负责调度，工作进程处理业务。</p>
+<p>这里要普及一下<code>进程</code>和<code>线程</code>的区别，进程占有资源（内存，总线，缓存，管道等），是操作系统进行资源调度的基本单位，是系统中一个互相较为独立的工作空间；线程占有的是 CPU 时间，在 CPU 调度中线程比较常见，线程不占有资源，存在于进程中。</p>
+<p>也就是说两个线程互相通信需要额外的操作，实现<code>进程间通信（IPC, Inter-Process Communication）</code>的方法有很多，比如：<code>命名管道</code>，<code>匿名管道</code>，<code>socket</code>，<code>信号量</code>，<code>共享内存</code>，<code>消息队列</code>，<code>Domain Socket</code>等，Node 采用的是 IPC 管道，通过 libuv 抽象，windows 底层采用命名管道，*nix 系统采用 Unix Domain Socket 实现。在应用层面表现为 message s 事件和 send()方法。</p>
+<p>来看一段创建多进程的例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// parent.js</span></span><br><span class="line"><span class="keyword">var</span> cp = <span class="built_in">require</span>(<span class="string">"child_process"</span>)</span><br><span class="line"><span class="keyword">var</span> child1 = cp.fork(<span class="string">"child.js"</span>)</span><br><span class="line"><span class="keyword">var</span> child2 = cp.fork(<span class="string">"child.js"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = <span class="built_in">require</span>(<span class="string">"net"</span>).createServer()</span><br><span class="line">server.listen(<span class="number">80</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  child1.send(<span class="string">"server"</span>, server)</span><br><span class="line">  child2.send(<span class="string">"server"</span>, server)</span><br><span class="line">  server.close()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// child.js</span></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>)</span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</span><br><span class="line">  res.writeHead(<span class="number">200</span>, &#123; <span class="string">"Content-Type"</span>: <span class="string">"text/plain"</span> &#125;)</span><br><span class="line">  res.end(<span class="string">"handled by child, pid is "</span> + process.pid + <span class="string">"\n"</span>)</span><br><span class="line">&#125;)</span><br><span class="line">process.on(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">m, tcp</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (m === <span class="string">"server"</span>) &#123;</span><br><span class="line">    tcp.on(<span class="string">"connection"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</span><br><span class="line">      server.emit(<span class="string">"connection"</span>, socket)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在主从模式中，数据可以由主进程获取然后转发到各个进程中，但是这种方式并不高效。另一种方法是各个进程分别监听该端口，以抢占式处理请求。</p>
+<p>在日常的开发过程中经常出现端口被占用的情况，所以在我们日常的认知中是一个端口只能由一个进程监听。事实上，多个进程是可以监听同一个端口的，只是由于我们分别启动进程监听端口时，socket 套接字的文件描述符各不相同，所以产生了错误。</p>
+<blockquote>
+<p>Node 底层对每个端口监听都设置了 SO_REUSEADDR 选项，这个选项的涵义是不同进程可以就相同的网卡和端口进行监听，这个服务器端套接字可以被不同的进程复用。由于独立启动的进程互相之间并不知道文件描述符，所以监听相同端口时就会失败。但对于 send()发送的句柄还原出来的服务而言，它们的文件描述符是相同的，所以监听相同端口不会引起异常。</p>
+</blockquote>
+<h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>本文从三个角度来简单介绍一下 node 集群管理需要注意的问题：</p>
+<ul>
+<li>负载均衡</li>
+<li>平滑重启</li>
+<li>状态共享</li>
+</ul>
+<h3 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h3><p>由于这些进程对于连接是抢占式的，也就是说，当连接进入端口时，所有进程都会被唤起，最终却只有一个进程能够获得连接，其他进程再次进入休眠。这种现象叫做<code>惊群</code>。</p>
+<p>这时就需要主进程来决定连接的分配问题。</p>
+<p>使用 pm2 和 nginx 可以方便的进行负载均衡，如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pm2 start app.js -i 4</span><br></pre></td></tr></table></figure>
+<p>来启动 4 个 app.js 进程。下一篇会有详细介绍</p>
+<p>为此 Node 采用的策略叫<code>Round-Robin</code>，又叫轮叫调度。轮叫调度的工作方式是由主进程接受连接，将其依次分发给工作<br>进程。分发的策略是在 N 个工作进程中，每次选择第 <code>i = (i + 1) mod n</code> 个进程来发送连接。在 cluster<br>模块中启用它的方式如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启用Round-Robin</span></span><br><span class="line">cluster.schedulingPolicy = cluster.SCHED_RR</span><br><span class="line"><span class="comment">// 不启用Round-Robin</span></span><br><span class="line">cluster.schedulingPolicy = cluster.SCHED_NONE</span><br></pre></td></tr></table></figure>
+<p>或者在环境变量中设置 <code>NODE_CLUSTER_SCHED_POLICY</code> 的值，如下所示：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> NODE_CLUSTER_SCHED_POLICY=rr</span><br><span class="line"><span class="keyword">export</span> NODE_CLUSTER_SCHED_POLICY=none</span><br></pre></td></tr></table></figure>
+<p>大致类似于 CPU 调度的时间片轮转法。</p>
+<h3 id="平滑重启"><a href="#平滑重启" class="headerlink" title="平滑重启"></a>平滑重启</h3><p>使用 pm2 的 reload 命令可以平滑的重启各个进程，也就是可以保证最少会有一个进程在工作中，而不是全部结束后重启。</p>
+<p><em>自杀信号</em></p>
+<p>在进程得知将要停止时，先向主进程发出“suicide”信号，主进程收到信号后会创建新工作进程来代替该进程，随后原进程处理完毕后即关闭。</p>
+<p><em>限量重启</em></p>
+<p>如果工作进程由于某些原因不断重启，可能会造成资源枯竭，这种频繁的重启有可能是由我们程序编写的原因造成的。如果在单位时间内进程重启超过一定次数，就会发出”giveup”事件,并放弃重启该工作进程。</p>
+<h3 id="状态共享"><a href="#状态共享" class="headerlink" title="状态共享"></a>状态共享</h3><p>解决数据共享最直接、简单的方式就是通过第三方来进行数据存储，比如将数据存放到数据库、磁盘文件、缓存服务（如 Redis）中，所有工作进程启动时将其读取进内存中。</p>
+<p>实现状态同步的一种方案是各个进程通过轮询的方式来获取数据更新，这种方式显然不合适，占用了大量的资源。<br>另一种方案是数据发生更改时主动通知各个进程，我们可以独立出来一个进程，通过轮询方式来判断状态的变化，一旦变化就主动通知进程变化。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.429Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxk001dv8fygr6qcpi7/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&title=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&title=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&source=从零开始 node（三）：多进程和集群在我们日常开发中，对于写好的 node 项目，使用node app.js即可启动。但是在大型项目，并发要求较高的情况..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxc0013v8fyg3lsm5g5/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">从零开始node（四）：工具</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqyo003qv8fy4481mc40/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">从零开始 node（二）：Event Loop</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&title=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&title=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&source=从零开始 node（三）：多进程和集群在我们日常开发中，对于写好的 node 项目，使用node app.js即可启动。但是在大型项目，并发要求较高的情况..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《从零开始 node（三）：多进程和集群》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxk001dv8fygr6qcpi7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3aQXKDMAwFUO5/abpNJwl8ydCpzfOqQwr4sdBIlrYtXvvLer3S+//9bb3fu92xMDAwpmXsh+vbto6vH289hyV7w8DAeA4j2UQe977dlWwoeS8GBgbG8eOqKd1JoAzehYGBgXEtI0kHkzQUAwMDo1fE5oG1Gkz/tBbHwMCYkDFSmt799y39DQwMjKkYe3FVX997WnlXGBgYSzPyAJckbePjGiNPw8DAeCbjjkBZPcgrNCEwMDAWZSTJXK9+HAmyCf7XFQwMjKUZ17YH8o/STP6SXzEwMJZj5JuuHq71mpp5Q/RDaoiBgbEoI0kHeyVuNYAeI6OmJgYGxqKMfOsjI2K91mahtYCBgfEARr6JPFHrxf6c96GIxcDAWJqR37YFqwfrpaRNPQYGxlSMavJXTeB6x3PHe4u+IgYGxmMY+eBXLxDnQ2aFD4qBgbEcoxo6q7yriuSTEIyBgbE0I0+8RkYoqkf/zUENDAyMpRkjR/NJ8pcE6F7D4LIOAwYGxr9n9IYtRsYvRoJyIc/FwMBYjtEbdLjqkK6aApb7sRgYGAsxrg2O40lhecwCAwNjOcZeXHlhmY9oJGF66HANAwNjckYv2FUbkNUmZV4el2EYGBjTMnpb7OFH7joJ4hgYGA9gJCVodSQiH5joNQMwMDAw8uO2kUZCnkSe5LYYGBgYwUNHGpZJ+D4J5RgYGA9gJEVs3h6oJn/VBicGBsbTGL3SsTpIkY9rJC3Pof4GBgbGTIwfLd5gviV/2hEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

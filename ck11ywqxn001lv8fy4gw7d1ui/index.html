@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>深入理解HTTPS | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="HTTP,HTTPS">
+    <meta name="description" content="深入理解 HTTPS在春天的面试过程中，HTTP/HTTPS 作为网络基础的一部分，几乎个面试官都有问到。本文将从网络协议开始，分析 HTTPS 如何做到相对安全的网络传输。 TL;DR 使用数字签名、数字证书建立 SSL 连接 使用连接时的随机数生成对称密钥加密报文  HTTP 报文未经过加密的 HTTP 报文在传输时，主要面临三个问题  明文传输导致敏感信息泄露 易遭受 MitM 攻击 易遭篡">
+<meta name="keywords" content="HTTP,HTTPS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解HTTPS">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="深入理解 HTTPS在春天的面试过程中，HTTP/HTTPS 作为网络基础的一部分，几乎个面试官都有问到。本文将从网络协议开始，分析 HTTPS 如何做到相对安全的网络传输。 TL;DR 使用数字签名、数字证书建立 SSL 连接 使用连接时的随机数生成对称密钥加密报文  HTTP 报文未经过加密的 HTTP 报文在传输时，主要面临三个问题  明文传输导致敏感信息泄露 易遭受 MitM 攻击 易遭篡">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.431Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解HTTPS">
+<meta name="twitter:description" content="深入理解 HTTPS在春天的面试过程中，HTTP/HTTPS 作为网络基础的一部分，几乎个面试官都有问到。本文将从网络协议开始，分析 HTTPS 如何做到相对安全的网络传输。 TL;DR 使用数字签名、数字证书建立 SSL 连接 使用连接时的随机数生成对称密钥加密报文  HTTP 报文未经过加密的 HTTP 报文在传输时，主要面临三个问题  明文传输导致敏感信息泄露 易遭受 MitM 攻击 易遭篡">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深入理解HTTPS</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深入理解HTTPS</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-08T06:09:26.000Z" itemprop="datePublished" class="page-time">
+  2019-03-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端基础/">前端基础</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#深入理解-HTTPS"><span class="post-toc-number">1.</span> <span class="post-toc-text">深入理解 HTTPS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TL-DR"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">TL;DR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#HTTP-报文"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">HTTP 报文</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#加密方式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">加密方式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数字证书与数字签名"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">数字证书与数字签名</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建立连接"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">建立连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Client-hello-amp-Server-hello"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">Client hello &amp; Server hello</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Certificate-Request-amp-Certificate-Verify"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">Certificate Request &amp; Certificate Verify</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Client-Key-Exchange"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">Client Key Exchange</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#对称加密"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">对称加密</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">参考链接</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深入理解HTTPS" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深入理解HTTPS</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-08 14:09:26" datetime="2019-03-08T06:09:26.000Z" itemprop="datePublished">2019-03-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端基础/">前端基础</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="深入理解-HTTPS"><a href="#深入理解-HTTPS" class="headerlink" title="深入理解 HTTPS"></a>深入理解 HTTPS</h1><p>在春天的面试过程中，HTTP/HTTPS 作为网络基础的一部分，几乎个面试官都有问到。本文将从网络协议开始，分析 HTTPS 如何做到相对安全的网络传输。</p>
+<h2 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h2><ul>
+<li>使用数字签名、数字证书建立 SSL 连接</li>
+<li>使用连接时的随机数生成对称密钥加密报文</li>
+</ul>
+<h2 id="HTTP-报文"><a href="#HTTP-报文" class="headerlink" title="HTTP 报文"></a>HTTP 报文</h2><p>未经过加密的 HTTP 报文在传输时，主要面临三个问题</p>
+<ol>
+<li>明文传输导致敏感信息泄露</li>
+<li>易遭受 MitM 攻击</li>
+<li>易遭篡改</li>
+</ol>
+<p>而 HTTPS 在 HTTP 的基础之上，在应用层下的表示层进行 SSL 加/解密，使得明文信息受到保护。</p>
+<h2 id="加密方式"><a href="#加密方式" class="headerlink" title="加密方式"></a>加密方式</h2><p>常用的加密方式可以分成两种</p>
+<ul>
+<li>对称密钥加密</li>
+<li>非对称密钥加密（公开密钥加密）</li>
+</ul>
+<p>对称密钥加密在加密和解密时使用相同的密钥，或是使用两个可以简单地相互推算的密钥。优点是加解密速度快，缺点是双方需要获取相同秘钥。</p>
+<p>非对称密钥需要两个密钥，一个是公开密钥，另一个是私有密钥；一个用作加密，另一个则用作解密。使用其中一个密钥把明文加密后所得的密文，只能用相对应的另一个密钥才能解密得到原本的明文；甚至连最初用来加密的密钥也不能用作解密。而且知道了其中一个，并不能凭此计算出另外一个；因此其中一个可以公开，称为公钥，任意向外发布；不公开的密钥为私钥，必须由用户自行严格秘密保管，绝不透过任何途径向任何人提供，也不会透露给被信任的要通信的另一方。优点是较为安全，只要私钥不泄露，传输就能保证单向的安全；缺点是加/解密速度较慢。</p>
+<p>所以，HTTPS 的传输过程可以分成两步：1. 使用非对称密钥建立连接，交换生成对称密钥的必要信息；2. 使用生成的对称密钥加密 HTTP 报文。</p>
+<h2 id="数字证书与数字签名"><a href="#数字证书与数字签名" class="headerlink" title="数字证书与数字签名"></a>数字证书与数字签名</h2><p>数字证书是由权威公正的第三方机构（CA）发放的身份凭证。</p>
+<p>CA 机构内部有单独的一对非对称密钥，C 和 C’。私钥 C’保存在 CA 机构的服务器中，公钥则存在于每个浏览器的内部。</p>
+<p>假设服务器 S 对应的域名为 S.com，S 首先在服务器内生成一对<code>非对称密钥</code>S 和 S’，妥善保存<code>私钥</code>，将<code>公钥</code>和其他必要的信息发送给 CA 进行认证。CA 核实确认 S 提交的信息无误后，把所有信息进行一次哈希运算，得到近乎唯一的字符串。再用 CA 的<code>私钥C&#39;</code>加密该字符串，得到的就是数字证书的<code>数字签名</code>，把以上信息合起来，就是 S 服务器的<code>数字证书</code>。</p>
+<h2 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h2><h3 id="Client-hello-amp-Server-hello"><a href="#Client-hello-amp-Server-hello" class="headerlink" title="Client hello &amp; Server hello"></a>Client hello &amp; Server hello</h3><p>当客户端 B 发起 SSL 握手时，向服务器 S 请求证书并发送随机数，S 返回对应域名的数字证书、随机数和加密方式等等。</p>
+<h3 id="Certificate-Request-amp-Certificate-Verify"><a href="#Certificate-Request-amp-Certificate-Verify" class="headerlink" title="Certificate Request &amp; Certificate Verify"></a>Certificate Request &amp; Certificate Verify</h3><p>客户端获取到证书，用浏览器内置的 CA 公钥 C，解密该证书的<code>数字签名</code>部分，同时对数字证书的其他部分做一次哈希运算，如果得到相同的字符串，则证明该证书没有篡改过，也就证明了该服务器的公钥是 S 的公钥。</p>
+<h3 id="Client-Key-Exchange"><a href="#Client-Key-Exchange" class="headerlink" title="Client Key Exchange"></a>Client Key Exchange</h3><p>客户端确认了数字证书的正确性之后，会用第一次握手获得的<code>公钥S</code>，加密一个随机数，发送给服务器。</p>
+<p>这一过程是<strong>单向安全</strong>的，因为通过公钥 S 加密的数据，只有私钥 S’才能够解密。而私钥只保存在服务器中。这也就意味着无论是采用中间人攻击还是篡改，都无法威胁到这一次传输的正确性。</p>
+<h2 id="对称加密"><a href="#对称加密" class="headerlink" title="对称加密"></a>对称加密</h2><p>三次握手结束之后，连接双方分别采用商定的算法和三个随机数算出对称密钥<code>K</code>。此时的对称密钥是安全的，因为生成所用的随机数其中一个是绝对安全的，同时对称密钥也没有在网络上传输。</p>
+<p>此后 SSL 链接都经过对称密钥加密，防止了中间人攻击和篡改。</p>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ol>
+<li><a href="https://www.amazon.cn/dp/B008XFDQ14/" target="_blank" rel="noopener">HTTP 权威指南</a></li>
+<li><a href="https://blog.csdn.net/yuanmengong886/article/details/73557464" target="_blank" rel="noopener">HTTPS – CSDN</a></li>
+<li><a href="https://www.jianshu.com/p/7158568e4867" target="_blank" rel="noopener">SSL 握手过程 –简书</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%B0%8D%E7%A8%B1%E5%AF%86%E9%91%B0%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">对称密钥 – Wikipedia</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%85%AC%E5%BC%80%E5%AF%86%E9%92%A5%E5%8A%A0%E5%AF%86" target="_blank" rel="noopener">非对称密钥 –Wikipedia</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.431Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxn001lv8fy4gw7d1ui/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTP/">HTTP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTTPS/">HTTPS</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&title=《深入理解HTTPS》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&title=《深入理解HTTPS》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解HTTPS》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqw50000v8fyehcs8cbp/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">LeetCode Contest 127</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxc0013v8fyg3lsm5g5/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">从零开始node（四）：工具</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&title=《深入理解HTTPS》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&title=《深入理解HTTPS》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深入理解HTTPS》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxn001lv8fy4gw7d1ui/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aS27CQBAFwNz/0s4BEOS9aZKIdnkVBWOmvGj17+srvq6H6/HTZ/c/3tM+7W0XBgbGxzKul1fyw6+fPIElZ8PAwLgPIzlEGy5fB+KzJzz9PwYGBkaZ/OVpZfLKMDAwMCYBN4G1qR4GBgbGpIhN0sQ81fu3WhwDA+MDGWeNs7/5+1fmGxgYGB/FuMrrrPU2eVp0KgwMjNWMPMDNk7OkPZc/GQMD456MJFzOc7O2kZcUxhgYGLsZZ42zZFQ5D7L5dzEwMHYz2uWtfGEiafe3bb46w8XAwFjBOAusZ6sV+cJZG4gxMDB2M84CZR5wJ620/MkYGBi7GZOmWNt0m9z5Q1mLgYGxmpG36fOjJD+frJ3VjT8MDIyljEkr7Yx9BitqcQwMjKWMySrYZBiQDwyiIhYDA2Mp4yzY5U2xvARtkVHzDgMDYwWjPW4boNs7D1NVDAyM1Yz3DjXze5JfnyxqYGBgbGW0w8v56lhb6EavAwMDYykjmnPGa155Qz8JysXwAAMD4zaM1yHyXaOFvLmWpJsYGBh3ZkwWuZJ7iqo6eXEYGBhLGVd5nc1Ik5A9ShMxMDBWM9oNq8mBJisa+XcxMDC2MvIg276Jdnh5lmhiYGDch9EONSfjxnYUWtfiGBgYt2ecNcjOSt+66YaBgYExXp5oFzKKFh4GBsYNGPkwIC9f2+SvHaBiYGDch3FWOrapW/tS2hCPgYGxlPEN7FmyUEsqtfQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

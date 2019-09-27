@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>Hexo搭建个人博客 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="blog,node,服务器">
+    <meta name="description" content="5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章NodeJS和Express搭建多人博客。实现了注册、登录、发布功能，用了ejs渲染。结果mongodb的各种中间件过于复杂，前端很难写。 目前主流的个人博客框架有jekyII和Hexo两款比较流行。">
+<meta name="keywords" content="blog,node,服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo搭建个人博客">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章NodeJS和Express搭建多人博客。实现了注册、登录、发布功能，用了ejs渲染。结果mongodb的各种中间件过于复杂，前端很难写。 目前主流的个人博客框架有jekyII和Hexo两款比较流行。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.427Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo搭建个人博客">
+<meta name="twitter:description" content="5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章NodeJS和Express搭建多人博客。实现了注册、登录、发布功能，用了ejs渲染。结果mongodb的各种中间件过于复杂，前端很难写。 目前主流的个人博客框架有jekyII和Hexo两款比较流行。">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Hexo搭建个人博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Hexo搭建个人博客</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-06-05T01:30:23.000Z" itemprop="datePublished" class="page-time">
+  2017-06-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备工作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Hexo"><span class="post-toc-number">2.</span> <span class="post-toc-text">Hexo</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#GitHub"><span class="post-toc-number">3.</span> <span class="post-toc-text">GitHub</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#服务器端配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">服务器端配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#远程部署"><span class="post-toc-number">5.</span> <span class="post-toc-text">远程部署</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#免密码部署"><span class="post-toc-number">6.</span> <span class="post-toc-text">免密码部署</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Hexo搭建个人博客" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Hexo搭建个人博客</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-06-05 09:30:23" datetime="2017-06-05T01:30:23.000Z" itemprop="datePublished">2017-06-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章<a href="http://wiki.jikexueyuan.com/project/express-mongodb-setup-blog/simple-blog.html" target="_blank" rel="noopener">NodeJS和Express搭建多人博客</a><br>。实现了注册、登录、发布功能，用了ejs渲染。结果mongodb的各种中间件过于复杂，前端很难写。</p>
+<p>目前主流的个人博客框架有<a href="http://jekyllrb.com/" target="_blank" rel="noopener">jekyII</a>和<a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>两款比较流行。</p>
+<a id="more"></a>
+<p>jekyII和Hexo都支持markdown语法，其中jekyII基于Ruby，Hexo基于Node.js。鉴于Node.js经验比较丰富，npm等命令比较熟悉，选择了Hexo。</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><blockquote>
+<p><a href="https://bwh1.net/" target="_blank" rel="noopener">BandwagonHost</a> VPS一台，Ubuntu16.04</p>
+<p><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">Node.js</a> v7.7.1 (本地和服务 器)</p>
+<p><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a> 私有库</p>
+</blockquote>
+<p>Nodejs服务器配置参考以下两篇文章</p>
+<p><a href="http://blog.csdn.net/cdnight/article/details/52541165" target="_blank" rel="noopener">CentOS</a></p>
+<p><a href="http://blog.csdn.net/u013806814/article/details/51960696" target="_blank" rel="noopener">Ubuntu</a></p>
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>安装Hexo</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>初始化项目</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [folder]</span><br></pre></td></tr></table></figure>
+<p>安装主题</p>
+<p><a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">Next</a></p>
+<p>新建文章</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] [title]</span><br></pre></td></tr></table></figure>
+<h1 id="GitHub"><a href="#GitHub" class="headerlink" title="GitHub"></a>GitHub</h1><p>GitHub网页上新建库，然后本地以下命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br><span class="line">git remote origin &lt;ssh&gt;</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>GitHub上作为博客备份</p>
+<h1 id="服务器端配置"><a href="#服务器端配置" class="headerlink" title="服务器端配置"></a>服务器端配置</h1><p>安装Nginx</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install nginx</span><br><span class="line">nginx -v</span><br></pre></td></tr></table></figure>
+<p><a href="http://atomlx.com/2016/08/12/test/" target="_blank" rel="noopener">修改Nginx配置</a></p>
+<h1 id="远程部署"><a href="#远程部署" class="headerlink" title="远程部署"></a>远程部署</h1><p>这里选用rsync方法进行部署</p>
+<p>服务端</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install rsync</span><br></pre></td></tr></table></figure>
+<p>本地</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-rsync --save</span><br></pre></td></tr></table></figure>
+<p>本地配置 _config.yml</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: rsync</span><br><span class="line">  host: ip</span><br><span class="line">  user: root</span><br><span class="line">  root: /var/www/html</span><br><span class="line">  port: 22</span><br></pre></td></tr></table></figure>
+<h1 id="免密码部署"><a href="#免密码部署" class="headerlink" title="免密码部署"></a>免密码部署</h1><p>可以发现如果用root进行ssh部署，每次都需要输入密码。而且bandwagon每次提供的ssh密码均为随机密码，很难输入。<br>这里思路是在vps里新建用户，然后再该用户目录里面部署blog。将本地的公钥存储在authorized_key里面，以后进行ssh连接可以进行免密码。同时新建用户的权限比较低，所以整体系统也比较安全。<br>参考以下文章：<a href="http://blog.csdn.net/leexide/article/details/17252369" target="_blank" rel="noopener">CSDN</a>  <a href="http://ch0ngbo.com/2016/01/16/hexo%E9%83%A8%E7%BD%B2%E5%88%B0VPS/" target="_blank" rel="noopener">BURKEXU’BLOG</a></p>
+<p>至此，新建文档后，通过</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>实现一键部署。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.427Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqwb0001v8fypc5ewl18/" target="_blank" rel="external">http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/服务器/">服务器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&title=《Hexo搭建个人博客》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&title=《Hexo搭建个人博客》 — 用代码做画笔&source=5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章NodeJS和Express搭建多人博客。实现了注册、登录、发布功能..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo搭建个人博客》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqy3002lv8fy3b8yn8qu/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">软件工程实践之第一次迭代</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&title=《Hexo搭建个人博客》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&title=《Hexo搭建个人博客》 — 用代码做画笔&source=5月份尝试过用node.js+express+mongodb搭建博客，参考了这篇文章NodeJS和Express搭建多人博客。实现了注册、登录、发布功能..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Hexo搭建个人博客》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqwb0001v8fypc5ewl18/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIUlEQVR42u3aW27DQAgF0Ox/0+4CrNgXcCN55vgrysPmtBJigM8nvo7Tdf702/fP36ne7bELAwPjtYzj8krCur7zBJbEhoGBsQ8jCSIPKEnEScJNYsPAwMDovc7Lysk9MTAwMCZp9Do1J2UoBgYGRu8QW2VUk/WPzuIYGBgvZORd99+//pf5BgYGxqsYR/FKhpTzQrAcFQYGxtKM6jCyetzN1y+Sp9x8EwMDYwNGni57yxPVo+w1LDqLY2BgLMG4Tm1J46z3TpJk899iYGDswyhk6FaI1YZaUoxiYGDsw6iOCScNuNE6RX58xcDAWIjx1CE2aZP1liQKv8LAwNiSMV/tSlJzntxvSkwMDIxFGb1FhwkvXzsrrHpgYGAszagmwR5pDisUixgYGMsxJiPJakuuN6SMBgkYGBibMXqtsTwFJ6Vkde0MAwNjH0beMsvDzZtoyZ2/vo+BgbE0ozdKzIPIYXnST56IgYGxDyN/fF4yVocNvcUODAyM9Ri9Va1eMs0XNZLYbupcDAyMRRl526tXFFaTbB4VBgbGDoxe2ytPl70DcKHRhoGBsSjjKF55QPlANLl/4f+AgYGxHGPSOMsTYjWVVxcyMDAwdmBUx5O9UHpLZhgYGBhJs6za/OotTMyRGBgYGL2BQa8Z1ysxMTAwMPLkmyxh5K23wp8MAwNjA0ZvGPBs8dcrEDEwMHZgTDY15gfXXok5mm9gYGC8ifEHvxmJh5e2BKkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

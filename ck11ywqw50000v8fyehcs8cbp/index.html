@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>LeetCode Contest 127 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode">
+    <meta name="description" content="LeetCode Contest 127从上周开始参加 LeetCode Contest。 LynnScarlettRank: 1806 / 4734Finish Time: 1:29:22Score: 13 1005. Maximize Sum Of Array After K Negations1005. Maximize Sum Of Array After K Negations 翻译：给">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Contest 127">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="LeetCode Contest 127从上周开始参加 LeetCode Contest。 LynnScarlettRank: 1806 / 4734Finish Time: 1:29:22Score: 13 1005. Maximize Sum Of Array After K Negations1005. Maximize Sum Of Array After K Negations 翻译：给">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Contest 127">
+<meta name="twitter:description" content="LeetCode Contest 127从上周开始参加 LeetCode Contest。 LynnScarlettRank: 1806 / 4734Finish Time: 1:29:22Score: 13 1005. Maximize Sum Of Array After K Negations1005. Maximize Sum Of Array After K Negations 翻译：给">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode Contest 127</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode Contest 127</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-11T00:59:31.000Z" itemprop="datePublished" class="page-time">
+  2019-03-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LeetCode-Contest-127"><span class="post-toc-number">1.</span> <span class="post-toc-text">LeetCode Contest 127</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1005-Maximize-Sum-Of-Array-After-K-Negations"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1005. Maximize Sum Of Array After K Negations</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1006-Clumsy-Factorial"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1006. Clumsy Factorial</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1007-Minimum-Domino-Rotations-For-Equal-Row"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1007. Minimum Domino Rotations For Equal Row</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1008-Construct-Binary-Search-Tree-from-Preorder-Traversal"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1008. Construct Binary Search Tree from Preorder Traversal</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode Contest 127" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode Contest 127</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-11 08:59:31" datetime="2019-03-11T00:59:31.000Z" itemprop="datePublished">2019-03-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="LeetCode-Contest-127"><a href="#LeetCode-Contest-127" class="headerlink" title="LeetCode Contest 127"></a>LeetCode Contest 127</h1><p>从上周开始参加 LeetCode Contest。</p>
+<p>LynnScarlett<br>Rank: 1806 / 4734<br>Finish Time: 1:29:22<br>Score: 13</p>
+<h2 id="1005-Maximize-Sum-Of-Array-After-K-Negations"><a href="#1005-Maximize-Sum-Of-Array-After-K-Negations" class="headerlink" title="1005. Maximize Sum Of Array After K Negations"></a>1005. Maximize Sum Of Array After K Negations</h2><p><a href="https://leetcode.com/contest/weekly-contest-127/problems/maximize-sum-of-array-after-k-negations/" target="_blank" rel="noopener">1005. Maximize Sum Of Array After K Negations</a></p>
+<p>翻译：给定一个 Number 数组 A, 有 K 次机会进行操作<code>A[i]=-A[i]</code>，使得数组逐项求和最大。</p>
+<p>思路:</p>
+<ol>
+<li>负数从小到大消耗 K;</li>
+<li>如果负数全部变成正数后，仍剩余<code>K&#39;</code>次，K 为偶数则跳过（因为偶数次翻转等于不翻转），K’ 为奇数则将排序后的 A 的最小值翻转。</li>
+</ol>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; A</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; K</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> largestSumAfterKNegations = <span class="function"><span class="keyword">function</span>(<span class="params">A, K</span>) </span>&#123;</span><br><span class="line">  A.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (; i &lt; A.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (A[i] &lt; <span class="number">0</span> &amp;&amp; K) &#123;</span><br><span class="line">      K--</span><br><span class="line">      A[i] = -A[i]</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (K === <span class="number">0</span> || A[i] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (K % <span class="number">2</span> === <span class="number">1</span>) &#123;</span><br><span class="line">    A.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> a - b)</span><br><span class="line">    A[<span class="number">0</span>] = -A[<span class="number">0</span>]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> j = <span class="number">0</span>; j &lt; A.length; j++) &#123;</span><br><span class="line">    sum += A[j]</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1006-Clumsy-Factorial"><a href="#1006-Clumsy-Factorial" class="headerlink" title="1006. Clumsy Factorial"></a>1006. Clumsy Factorial</h2><p><a href="https://leetcode.com/contest/weekly-contest-127/problems/clumsy-factorial/" target="_blank" rel="noopener">1006. Clumsy Factorial</a></p>
+<p>翻译：给定一个数 n，把<code>n!</code>运算中的每个<code>*</code>运算符依次替换成<code>* / + -</code>循环，如：<code>clumsy(10) = 10 * 9 / 8 + 7 - 6 * 5 / 4 + 3 - 2 * 1</code>，除法运算后直接取<code>floor</code>。</p>
+<p>思路：<code>clumsy(10)</code>可以看成<code>(10 * 9 / 8 + 7) - ( 6 * 5 / 4 - 3) - (2 * 1)</code>。</p>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; N</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> clumsy = <span class="function"><span class="keyword">function</span>(<span class="params">N</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> clumsyRegion = <span class="function">(<span class="params">start, len, flag</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">1</span>) <span class="keyword">return</span> flag ? <span class="number">1</span> : <span class="number">-1</span></span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">2</span>) <span class="keyword">return</span> flag ? <span class="number">2</span> : <span class="number">-2</span></span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">3</span>) <span class="keyword">return</span> flag ? <span class="number">6</span> : <span class="number">-6</span></span><br><span class="line">    <span class="keyword">if</span> (len === <span class="number">4</span>)</span><br><span class="line">      <span class="keyword">return</span> flag</span><br><span class="line">        ? <span class="built_in">Math</span>.floor((start * (start - <span class="number">1</span>)) / (start - <span class="number">2</span>)) + (start - <span class="number">3</span>)</span><br><span class="line">        : -<span class="built_in">Math</span>.floor((start * (start - <span class="number">1</span>)) / (start - <span class="number">2</span>)) + (start - <span class="number">3</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> sum = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> i = N</span><br><span class="line">  <span class="keyword">for</span> (; i &gt; <span class="number">3</span>; i -= <span class="number">4</span>) &#123;</span><br><span class="line">    sum += clumsyRegion(i, <span class="number">4</span>, i === N)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (i) &#123;</span><br><span class="line">    sum += clumsyRegion(i, i, i === N)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1007-Minimum-Domino-Rotations-For-Equal-Row"><a href="#1007-Minimum-Domino-Rotations-For-Equal-Row" class="headerlink" title="1007. Minimum Domino Rotations For Equal Row"></a>1007. Minimum Domino Rotations For Equal Row</h2><p><a href="https://leetcode.com/contest/weekly-contest-127/problems/minimum-domino-rotations-for-equal-row/" target="_blank" rel="noopener">1007. Minimum Domino Rotations For Equal Row</a></p>
+<p>翻译：两个 Number 数组 A 和 B，通过交换相同位置的 A 和 B 元素，使得 A 或 B 中各个元素相同，求最小操作次数。</p>
+<p>思路：</p>
+<ol>
+<li>先出现次数最多的元素 N，如果 N 出现的次数小于 A 的长度，那么无论如何交换都不会有完全相同的数组；</li>
+<li>针对 N，遍历 A 和 B，维护两个数组 sumA 和 sumB，分别记录 A 和 B 变成完全相同数组需要的操作数；</li>
+<li>如果<code>A[i]!==N</code>，<code>sumA++</code>，B 同理；</li>
+<li>返回<code>Math.min(sumA, sumB)</code>。</li>
+</ol>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; A</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; B</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> minDominoRotations = <span class="function"><span class="keyword">function</span>(<span class="params">A, B</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> dic = <span class="built_in">Array</span>(<span class="number">7</span>).fill(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; A.length; i++) &#123;</span><br><span class="line">    dic[A[i]]++</span><br><span class="line">    dic[B[i]]++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> j = <span class="number">1</span></span><br><span class="line">  <span class="keyword">for</span> (; j &lt; <span class="number">7</span>; j++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (dic[j] &gt;= A.length) &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (dic[j] &lt; A.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> sumA = <span class="number">0</span></span><br><span class="line">  <span class="keyword">var</span> sumB = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> k = <span class="number">0</span>; k &lt; A.length; k++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (A[k] === j &amp;&amp; B[k] !== j) &#123;</span><br><span class="line">      sumB++</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (A[k] !== j &amp;&amp; B[k] === j) &#123;</span><br><span class="line">      sumA++</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (A[k] !== j &amp;&amp; B[k] !== j) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sumA &lt; sumB ? sumA : sumB</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1008-Construct-Binary-Search-Tree-from-Preorder-Traversal"><a href="#1008-Construct-Binary-Search-Tree-from-Preorder-Traversal" class="headerlink" title="1008. Construct Binary Search Tree from Preorder Traversal"></a>1008. Construct Binary Search Tree from Preorder Traversal</h2><p><a href="https://leetcode.com/contest/weekly-contest-127/problems/construct-binary-search-tree-from-preorder-traversal/" target="_blank" rel="noopener">1008. Construct Binary Search Tree from Preorder Traversal</a></p>
+<p>翻译：通过前序遍历序列生成 BST。</p>
+<p>思路：分治法，序列第一项为（当前子树的）根节点，序列后第一个比根节点大的开始为右子树，其余的为左子树。</p>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = val;</span></span><br><span class="line"><span class="comment"> *     this.left = this.right = null;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; preorder</span></span><br><span class="line"><span class="comment"> * @return &#123;TreeNode&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> bstFromPreorder = <span class="function"><span class="keyword">function</span>(<span class="params">preorder</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (preorder.length === <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> mid = preorder[<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">let</span> tree = <span class="keyword">new</span> TreeNode(mid)</span><br><span class="line">  <span class="keyword">var</span> i = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (; i &lt; preorder.length; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (preorder[i] &gt; mid) &#123;</span><br><span class="line">      <span class="keyword">break</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  tree.left = bstFromPreorder(preorder.slice(<span class="number">1</span>, i))</span><br><span class="line">  tree.right = bstFromPreorder(preorder.slice(i))</span><br><span class="line">  <span class="keyword">return</span> tree</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.428Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqw50000v8fyehcs8cbp/" target="_blank" rel="external">http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&title=《LeetCode Contest 127》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&title=《LeetCode Contest 127》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Contest 127》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxm001jv8fya2ioxl3r/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">正则表达式问题记录</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxn001lv8fy4gw7d1ui/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深入理解HTTPS</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&title=《LeetCode Contest 127》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&title=《LeetCode Contest 127》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Contest 127》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqw50000v8fyehcs8cbp/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3ay44CMQxEUf7/p3skVkhMQpUr82j7ZoUaaHJ6YfzI4yGv67neX79eeV2rb62+u79ybMGAAeO2jGu7VpvYX1FI+oPY3xkGDBhzGEqQ3f+AvsXkbsvrMGDAgLFN4JK0T3lYMGDAgOEyakFWqT2VxwcDBozJjLwErQXrP6jFYcCAcUNGMhj46de/NN+AAQPGP2Zc5nJTRiUR3N9H2hUMGDBaM5KmfK2stUtT+UHAgAGjK0PZqBJe9c/oeIMNAwaMkYxaCrhPDd3E0UhMYcCA0ZqhJGS1YOo275RHIxWxMGDAaMpw0zhl627imI8oYMCA0ZWhh7lacFSCrHtQ7JvPwIABozXDbdO7YJdRK4xhwIAxjeE27mutt7MFLQwYMCYw8kNdyoEJPXRGhzZgwIDRlKGncW4QPHU4o1jEwoABowVDb6jVkj93MOBegQEDxjSGO4xMitIk7C7/MWDAgNGUkQwXa0mhMhgoBnoYMGC0ZugFpLsVtz2XFMAwYMDoytAPPdRGBacC8Ye7wYABYwwjadYn7AN7gAEDRmtGraFfC8F6gqjcGQYMGHMYl7n0MYDb4k9CMAwYMHoz9KUPIJORw4FzuDBgwGjKcINgjZqXtR/ehQEDxgCGGwSVUOg20dzQL70BAwaMYYxk60rC57b5igEXBgwYAxg6pha+lcMWUWoIAwaM2zJqzfpTRaxb1sKAAWMaozYYSI5K6Iy86IUBA8bNGV/J+MJ4VVc/awAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>读《构建之法：现代软件工程》 #2 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Reading,Software Engineering">
+    <meta name="description" content="《构建之法：现代软件工程》 #2Agree8.5 功能的定位和优先级这个老师上课的时候有详细讲过，关于“惊喜”“核心功能”和“基本功能”随投资力度和产品质量变化而增长的趋势。 12.1.1 用户体验的第一印象 5W1H 原则：Who、When、Where、What、Why、How 谁是你的目标用户？ 他们会在什么时候使用你的产品？ 目标用户会在哪里和你的产品交互？ 你的产品是什么？用户期待的是什">
+<meta name="keywords" content="Reading,Software Engineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《构建之法：现代软件工程》 #2">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="《构建之法：现代软件工程》 #2Agree8.5 功能的定位和优先级这个老师上课的时候有详细讲过，关于“惊喜”“核心功能”和“基本功能”随投资力度和产品质量变化而增长的趋势。 12.1.1 用户体验的第一印象 5W1H 原则：Who、When、Where、What、Why、How 谁是你的目标用户？ 他们会在什么时候使用你的产品？ 目标用户会在哪里和你的产品交互？ 你的产品是什么？用户期待的是什">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.433Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《构建之法：现代软件工程》 #2">
+<meta name="twitter:description" content="《构建之法：现代软件工程》 #2Agree8.5 功能的定位和优先级这个老师上课的时候有详细讲过，关于“惊喜”“核心功能”和“基本功能”随投资力度和产品质量变化而增长的趋势。 12.1.1 用户体验的第一印象 5W1H 原则：Who、When、Where、What、Why、How 谁是你的目标用户？ 他们会在什么时候使用你的产品？ 目标用户会在哪里和你的产品交互？ 你的产品是什么？用户期待的是什">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">读《构建之法：现代软件工程》 #2</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">读《构建之法：现代软件工程》 #2</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-22T03:43:38.000Z" itemprop="datePublished" class="page-time">
+  2018-07-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#《构建之法：现代软件工程》-2"><span class="post-toc-number">1.</span> <span class="post-toc-text">《构建之法：现代软件工程》 #2</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Agree"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Agree</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-5-功能的定位和优先级"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">8.5 功能的定位和优先级</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-1-用户体验的第一印象"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">12.1.1 用户体验的第一印象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-1-3-软件服务始终都要记得用户的选择"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">12.1.3 软件服务始终都要记得用户的选择</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-2-用户体验设计的步骤和目标"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">12.2 用户体验设计的步骤和目标</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Notice"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Notice</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-6-3-提高估计能力的招数"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">8.6.3 提高估计能力的招数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-4-领导力——搞笑的团队讨论"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">9.4 领导力——搞笑的团队讨论</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图-9-7-创业公司失败的主要原因"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">图 9.7 创业公司失败的主要原因</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图-11-5-开发人员的标准开发流程"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">图 11.5 开发人员的标准开发流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-3-用户体验评价标准"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">12.3 用户体验评价标准</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Warning-Question"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Warning/Question</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FDD-的规范描述"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">FDD 的规范描述</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-读《构建之法：现代软件工程》-2" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">读《构建之法：现代软件工程》 #2</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-22 11:43:38" datetime="2018-07-22T03:43:38.000Z" itemprop="datePublished">2018-07-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="《构建之法：现代软件工程》-2"><a href="#《构建之法：现代软件工程》-2" class="headerlink" title="《构建之法：现代软件工程》 #2"></a>《构建之法：现代软件工程》 #2</h1><h2 id="Agree"><a href="#Agree" class="headerlink" title="Agree"></a><font color="green">Agree</font></h2><h3 id="8-5-功能的定位和优先级"><a href="#8-5-功能的定位和优先级" class="headerlink" title="8.5 功能的定位和优先级"></a>8.5 功能的定位和优先级</h3><p>这个老师上课的时候有详细讲过，关于“惊喜”“核心功能”和“基本功能”随投资力度和产品质量变化而增长的趋势。</p>
+<h3 id="12-1-1-用户体验的第一印象"><a href="#12-1-1-用户体验的第一印象" class="headerlink" title="12.1.1 用户体验的第一印象"></a>12.1.1 用户体验的第一印象</h3><blockquote>
+<p>5W1H 原则：Who、When、Where、What、Why、How</p>
+<p>谁是你的目标用户？</p>
+<p>他们会在什么时候使用你的产品？</p>
+<p>目标用户会在哪里和你的产品交互？</p>
+<p>你的产品是什么？用户期待的是什么？</p>
+<p>用户为什么要使用你的产品？在众多的竞争产品中，用户为什么要选择你的产品？</p>
+<p>用户是如何与你的产品  进行交互的？</p>
+</blockquote>
+<h3 id="12-1-3-软件服务始终都要记得用户的选择"><a href="#12-1-3-软件服务始终都要记得用户的选择" class="headerlink" title="12.1.3 软件服务始终都要记得用户的选择"></a>12.1.3 软件服务始终都要记得用户的选择</h3><p>描述了以下问题：</p>
+<blockquote>
+<p>用户上了银行的门户网站，把语言改成英文，但是发来的手机验证码是中文的，而且在用户的手机上显示乱码。</p>
+</blockquote>
+<h3 id="12-2-用户体验设计的步骤和目标"><a href="#12-2-用户体验设计的步骤和目标" class="headerlink" title="12.2 用户体验设计的步骤和目标"></a>12.2 用户体验设计的步骤和目标</h3><blockquote>
+<p>需要指出的是，软件工程师往往以熟练掌握任职阻力大的工具而自豪(如命令行，Vim，EMACS 等)……</p>
+</blockquote>
+<h2 id="Notice"><a href="#Notice" class="headerlink" title="Notice"></a><font color="blue">Notice</font></h2><h3 id="8-6-3-提高估计能力的招数"><a href="#8-6-3-提高估计能力的招数" class="headerlink" title="8.6.3 提高估计能力的招数"></a>8.6.3 提高估计能力的招数</h3><blockquote>
+<p>Y=X±X÷N（对某件事情的估计时间 X，做过类似开发工作的次数 N）</p>
+</blockquote>
+<h3 id="9-4-领导力——搞笑的团队讨论"><a href="#9-4-领导力——搞笑的团队讨论" class="headerlink" title="9.4 领导力——搞笑的团队讨论"></a>9.4 领导力——搞笑的团队讨论</h3><blockquote>
+<p>“对，而且……”<br>“好，但是……”</p>
+</blockquote>
+<h3 id="图-9-7-创业公司失败的主要原因"><a href="#图-9-7-创业公司失败的主要原因" class="headerlink" title="图 9.7 创业公司失败的主要原因"></a>图 9.7 创业公司失败的主要原因</h3><p>其中没有实际的市场需求占 42%</p>
+<h3 id="图-11-5-开发人员的标准开发流程"><a href="#图-11-5-开发人员的标准开发流程" class="headerlink" title="图 11.5 开发人员的标准开发流程"></a>图 11.5 开发人员的标准开发流程</h3><h3 id="12-3-用户体验评价标准"><a href="#12-3-用户体验评价标准" class="headerlink" title="12.3 用户体验评价标准"></a>12.3 用户体验评价标准</h3><blockquote>
+<ol>
+<li>尽快提供可感触的反馈</li>
+<li>系统界面符合用户的现实惯例</li>
+<li>用户拥有控制权</li>
+<li>一致性和标准化</li>
+<li>适合各种类型的用户</li>
+<li>帮助用户识别、诊断并修复错误</li>
+<li>有必要的提示和帮助文档</li>
+</ol>
+</blockquote>
+<h2 id="Warning-Question"><a href="#Warning-Question" class="headerlink" title="Warning/Question"></a><font color="yellow">Warning/Question</font></h2><h3 id="FDD-的规范描述"><a href="#FDD-的规范描述" class="headerlink" title="FDD 的规范描述"></a>FDD 的规范描述</h3>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.433Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxz002dv8fybqvfbt2p/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software-Engineering/">Software Engineering</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&title=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&title=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxf0016v8fyf8u2ubhf/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">工作心得#第肆周</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxw0028v8fyce5kq38g/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">读《社会契约论》 #1</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&title=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&title=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读《构建之法：现代软件工程》 #2》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxz002dv8fybqvfbt2p/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACG0lEQVR42u3aS27CQBAFQO5/abJFimTemzaJmCmvEML2FItW/x6P+Hq+XL+/ef3++vf5vY9PXBgYGF/LeF5eybGunzyBJWfDwMA4h5Ec4vo3yV3Jgdbei4GBgdEmf9dHz9+FgYGBMQ+4eaHbpqEYGBgYa0Xs9aHbZPHfanEMDIwvZORd97///JH5BgYGxlcxnuWVP2eSCNanwsDA2JoxL1DvesJ1upk8DQMDY1dG3rK/K1DmpWxRKmNgYBzAyEl5IjgPsvm9GBgYJzCSJa1JWMzXMtoRJgYGxjmMtTRxLQSP1imSKhwDA2Nrxlp6N+rzxQH3zV0YGBgHM/LiMxle5vfWowUMDIwDGJM2fTs2aINsVFpjYGBszZgskhYviP+gxSIWAwNja0a+GLEWlNvhZdt6w8DAOIExWYC4C5yPKN6kmxgYGJsy2qbYZJwwWSx7E10xMDC2Zswb/ZOW3Nrw8g0SAwNjU0abCLahOW/6T86AgYFxGmPe1i9WJeKCtshzMTAwDmDcla4V4TJ4bzHIxMDA2JrRBr62QZYnhcW2CAYGxtaMZ3nl/83akKAdSGBgYJzAyK82sZssqibF7SIMAwPjaxlJkM3D5b34IlXFwMA4gNE2vNbSuzZxLE6FgYGBsbTmNQmgi3ttGBgYGDEpD7hJohk1ATEwMA5gJEXsJIGbL1jUyxYYGBgbMdpjrR06WRdbG45iYGBszfgBxS039afsEUEAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>工作心得#第肆周 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Dev">
+    <meta name="description" content="工作心得 #第四周正则表达式正则表达式在春天求职的时候就有学过，但是一直都没有扎实地记住。这周又重新仔细看了一遍 =&amp;gt; 这篇文章，果然还是不能功利地学习啊…… 在学习的时候，我把正则表达式的元素分成两类， 字符类型和字符数量。字符类型分为匹配字符和匹配位置。字符数量分为 0,1,n 次。还有关于分组什么的单独学习吧。 Chrome Dev Tools用 JS 刷 LeetCode 的时候，">
+<meta name="keywords" content="Dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作心得#第肆周">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="工作心得 #第四周正则表达式正则表达式在春天求职的时候就有学过，但是一直都没有扎实地记住。这周又重新仔细看了一遍 =&amp;gt; 这篇文章，果然还是不能功利地学习啊…… 在学习的时候，我把正则表达式的元素分成两类， 字符类型和字符数量。字符类型分为匹配字符和匹配位置。字符数量分为 0,1,n 次。还有关于分组什么的单独学习吧。 Chrome Dev Tools用 JS 刷 LeetCode 的时候，">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作心得#第肆周">
+<meta name="twitter:description" content="工作心得 #第四周正则表达式正则表达式在春天求职的时候就有学过，但是一直都没有扎实地记住。这周又重新仔细看了一遍 =&amp;gt; 这篇文章，果然还是不能功利地学习啊…… 在学习的时候，我把正则表达式的元素分成两类， 字符类型和字符数量。字符类型分为匹配字符和匹配位置。字符数量分为 0,1,n 次。还有关于分组什么的单独学习吧。 Chrome Dev Tools用 JS 刷 LeetCode 的时候，">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">工作心得#第肆周</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">工作心得#第肆周</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-05T03:28:26.000Z" itemprop="datePublished" class="page-time">
+  2018-08-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#工作心得-第四周"><span class="post-toc-number">1.</span> <span class="post-toc-text">工作心得 #第四周</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#正则表达式"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">正则表达式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Chrome-Dev-Tools"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Chrome Dev Tools</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Markdown-格式"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">Markdown 格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#localStorage-sessionStorage"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">localStorage/sessionStorage</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#escape-encodeURI-encodeURIComponent"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">escape()/encodeURI()/encodeURIComponent()</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#判断-undefined-null-NaN"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">判断 undefined/null/NaN</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#KMP-算法"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">KMP 算法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#async-await-实践"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">async/await 实践</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-工作心得-第肆周" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">工作心得#第肆周</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-05 11:28:26" datetime="2018-08-05T03:28:26.000Z" itemprop="datePublished">2018-08-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="工作心得-第四周"><a href="#工作心得-第四周" class="headerlink" title="工作心得 #第四周"></a>工作心得 #第四周</h1><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>正则表达式在春天求职的时候就有学过，但是一直都没有扎实地记住。这周又重新仔细看了一遍 =&gt; <a href="http://deerchao.net/tutorials/regex/regex.htm" target="_blank" rel="noopener">这篇文章</a>，果然还是不能功利地学习啊……</p>
+<p>在学习的时候，我把正则表达式的元素分成两类， 字符类型和字符数量。<br>字符类型分为匹配字符和匹配位置。字符数量分为 0,1,n 次。<br>还有关于分组什么的单独学习吧。</p>
+<h2 id="Chrome-Dev-Tools"><a href="#Chrome-Dev-Tools" class="headerlink" title="Chrome Dev Tools"></a>Chrome Dev Tools</h2><p>用 JS 刷 LeetCode 的时候，debug 就全靠 Chrome Dev Tools 了，但是这个小工具其实还有很多隐藏功能。参考<a href="http://www.css88.com/doc/chrome-devtools/" target="_blank" rel="noopener">这篇文章</a>。</p>
+<h2 id="Markdown-格式"><a href="#Markdown-格式" class="headerlink" title="Markdown 格式"></a>Markdown 格式</h2><p><a href="http://xianbai.me/learn-md/article/about/readme.html" target="_blank" rel="noopener">MarkDown GitBook</a></p>
+<h2 id="localStorage-sessionStorage"><a href="#localStorage-sessionStorage" class="headerlink" title="localStorage/sessionStorage"></a>localStorage/sessionStorage</h2><p>调试的时候在 Dev Tools 的 Application 选项卡中就可以找到。调用的时候用以下方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">localStorage.setItem(<span class="string">"Foo"</span>, Bar)</span><br><span class="line">localStorage.getItem(<span class="string">"Baz"</span>)</span><br><span class="line">localStorage.clear()</span><br><span class="line">localStorage.removeItem(<span class="string">"Qux"</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="escape-encodeURI-encodeURIComponent"><a href="#escape-encodeURI-encodeURIComponent" class="headerlink" title="escape()/encodeURI()/encodeURIComponent()"></a>escape()/encodeURI()/encodeURIComponent()</h2><p>区别见<a href="https://www.zhihu.com/question/21861899" target="_blank" rel="noopener">这里</a></p>
+<h2 id="判断-undefined-null-NaN"><a href="#判断-undefined-null-NaN" class="headerlink" title="判断 undefined/null/NaN"></a>判断 undefined/null/NaN</h2><p><a href="https://www.jianshu.com/p/742af5f7d671" target="_blank" rel="noopener">This</a></p>
+<h2 id="KMP-算法"><a href="#KMP-算法" class="headerlink" title="KMP 算法"></a>KMP 算法</h2><h2 id="async-await-实践"><a href="#async-await-实践" class="headerlink" title="async/await 实践"></a>async/await 实践</h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.430Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxf0016v8fyf8u2ubhf/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&title=《工作心得#第肆周》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&title=《工作心得#第肆周》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《工作心得#第肆周》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqwi0005v8fyzunqhrk5/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">MpVue探坑日记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxz002dv8fybqvfbt2p/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">读《构建之法：现代软件工程》 #2</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&title=《工作心得#第肆周》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&title=《工作心得#第肆周》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《工作心得#第肆周》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxf0016v8fyf8u2ubhf/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aQW7DMAwFUd//0u62RRFhPmkXFTVaBYFj63nBUCSvC6/726p9//vz+rfXG0uGDBnbMu7lIg9e37kDI3uTIUPGOQyyCRIQ11eSDZFnyZAhQwZn8Eeug3XtnjJkyJBB0jie2KVpqAwZMmTUDrGd0ht/Na+fxWXIkLEho1Y4+5vPr/Q3ZMiQsRXjDtc6OePFNR520a5kyJAxmsEDXAdDWpjrp6D9yJAh4xgGKZkRQK2g1nm6DBkypjI641/pMBkPsgT/4xsZMmSMZpCt9xNHsqHaWJgMGTLOYdQaA7WA29/owy1MGTJkbMJIN8HTvqfeIvqVDBkyjmTwa3hSSIpx/Mogw5UhQ8a2jDS9S8NxpzHJX4QMGTJmMzol/nTkotYwCFJMGTJkDGXwYYi0ZNZpXsaHWBkyZIxmPNUeIDw+HMavf7jLIUOGjH/JSIe00vGLNwL9x3qhDBkyRjM6W0xLYzzSBwFdhgwZoxm8TVgLxORu5J6o5SlDhoxjGP0DLS/opwfaOEGUIUPGaEZ6yOTBOh0sCxJHGTJkHMBIsyweZPlxt3aslSFDxmzGHS5+rE1L/Gm4lyFDxjmMWrDjw1u8JMfHNVrjYjJkyNiWwYPsG/GtM4oR/HvIkCFjBIMcQdMxiPTKWkNChgwZMjoluVqbgTcGWgFXhgwZoxmdrZMnrl/ZxzvLkCHjAMZTYxO15C8dyJAhQ8ZpjM7RsX9wrQ2EtfobMmTI2InxBSyDslBNnl+dAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

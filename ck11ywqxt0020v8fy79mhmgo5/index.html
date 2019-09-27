@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>读《JavaScript专家编程》 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Reading,Software Engineering">
+    <meta name="description" content="读《JavaScript 专家编程》《JavaScript 专家编程》这本书刚开始读的时候有种能读一个月的错觉。但是实际上不到一周时间就读完了，原因在于这本书有点“头重脚轻”，前面讲的挺透彻，越到后面越放飞自我……再加上年代久远，有些工具已经不适用了，而且其中的一些有关于测试的内容还是在软件工程类别的书里深入了解吧。 第 1 章 对象和原型对象概述 configurable：设置为 false 的">
+<meta name="keywords" content="Reading,Software Engineering">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读《JavaScript专家编程》">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="读《JavaScript 专家编程》《JavaScript 专家编程》这本书刚开始读的时候有种能读一个月的错觉。但是实际上不到一周时间就读完了，原因在于这本书有点“头重脚轻”，前面讲的挺透彻，越到后面越放飞自我……再加上年代久远，有些工具已经不适用了，而且其中的一些有关于测试的内容还是在软件工程类别的书里深入了解吧。 第 1 章 对象和原型对象概述 configurable：设置为 false 的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.432Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读《JavaScript专家编程》">
+<meta name="twitter:description" content="读《JavaScript 专家编程》《JavaScript 专家编程》这本书刚开始读的时候有种能读一个月的错觉。但是实际上不到一周时间就读完了，原因在于这本书有点“头重脚轻”，前面讲的挺透彻，越到后面越放飞自我……再加上年代久远，有些工具已经不适用了，而且其中的一些有关于测试的内容还是在软件工程类别的书里深入了解吧。 第 1 章 对象和原型对象概述 configurable：设置为 false 的">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">读《JavaScript专家编程》</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">读《JavaScript专家编程》</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-22T12:02:50.000Z" itemprop="datePublished" class="page-time">
+  2018-08-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#读《JavaScript-专家编程》"><span class="post-toc-number">1.</span> <span class="post-toc-text">读《JavaScript 专家编程》</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第-1-章-对象和原型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">第 1 章 对象和原型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对象概述"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">对象概述</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第-2-章-函数"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第 2 章 函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第-3-章-闭包"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">第 3 章 闭包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第-4-章-强转"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">第 4 章 强转</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#第-7-章-风格"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">第 7 章 风格</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多线程"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">多线程</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-读《JavaScript专家编程》" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">读《JavaScript专家编程》</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-22 20:02:50" datetime="2018-08-22T12:02:50.000Z" itemprop="datePublished">2018-08-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Notes/">Notes</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="读《JavaScript-专家编程》"><a href="#读《JavaScript-专家编程》" class="headerlink" title="读《JavaScript 专家编程》"></a>读《JavaScript 专家编程》</h1><p><a href="https://www.amazon.cn/dp/B01251LYTW" target="_blank" rel="noopener">《JavaScript 专家编程》</a>这本书刚开始读的时候有种能读一个月的错觉。但是实际上不到一周时间就读完了，原因在于这本书有点“头重脚轻”，前面讲的挺透彻，越到后面越放飞自我……再加上年代久远，有些工具已经不适用了，而且其中的一些有关于测试的内容还是在软件工程类别的书里深入了解吧。</p>
+<h2 id="第-1-章-对象和原型"><a href="#第-1-章-对象和原型" class="headerlink" title="第 1 章 对象和原型"></a>第 1 章 对象和原型</h2><h3 id="对象概述"><a href="#对象概述" class="headerlink" title="对象概述"></a>对象概述</h3><ul>
+<li>configurable：设置为 false 的时候，属性的描述符会被锁定，无法修改。</li>
+<li>enumberable：设置为 false 的时候，属性不可以被遍历（阻止遍历，不是被隐藏起来）</li>
+<li>writable：设置为 false 的时候，属性的值不可被改变</li>
+<li>检视对象：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 返回对象属性特性的配置</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyDescriptor(o,<span class="string">'foo'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 返回对象全部属性的名字，包括那些不能枚举的</span></span><br><span class="line"><span class="built_in">Object</span>.getOwnPropertyNames(o)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 用来返回特定对象的原型，有时可以使用__proto__代替，但是仅可访问，设置时需要__proto__</span></span><br><span class="line"><span class="built_in">Object</span>.getPrototypeOf(o)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 分辨某个属性是否存在与对象实例中</span></span><br><span class="line"><span class="built_in">Object</span>.hasOwnProperty(<span class="string">'foo'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 返回可枚举属性</span></span><br><span class="line"><span class="built_in">Object</span>.keys()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 6. 如果对象不能扩展，属性也不能修改，返回true</span></span><br><span class="line"><span class="built_in">Object</span>.isFrozen()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 7. 这个方法在对象额整个原型链中检查每一环，看传入的对象是否存在于其中</span></span><br><span class="line"><span class="built_in">Object</span>.isPrototypeOf()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 8. 使用Object.preventExtensions('o')来禁止扩展</span></span><br><span class="line"><span class="built_in">Object</span>.isExtensible()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 9. 对象不可扩展&amp;&amp;属性都不可配置</span></span><br><span class="line"><span class="built_in">Object</span>.isSealed()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 10. 使用一个基本类型的值来描述对象</span></span><br><span class="line"><span class="built_in">Object</span>.valueOf()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 11. 与严格相等运算符类似，不需要强制转换时是否具有相同的值</span></span><br><span class="line"><span class="comment">// console.log(NaN===0/0) false</span></span><br><span class="line"><span class="comment">// Object.is(NaN,0/0) true</span></span><br><span class="line"><span class="built_in">Object</span>.is(foo,bar)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改对象</li>
+</ul>
+<p>区分几个概念：</p>
+<p>freeze：<del>增/删/改</del><br>seal：<del>增/删</del><br>preventExtensions：<del>增</del></p>
+<ul>
+<li>创建对象</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/** new的四个步骤</span></span><br><span class="line"><span class="comment"> * 1. 创建新的对象，相当于创建字面量&#123;&#125;</span></span><br><span class="line"><span class="comment"> * 2. 构造函数指向new的函数this.constructor = foo</span></span><br><span class="line"><span class="comment"> * 3. 该对象的原型链接到Foo.prototype</span></span><br><span class="line"><span class="comment"> * 4. 传入的参数赋给新对象</span></span><br><span class="line"><span class="comment"> * 之前看过new的三个步骤版本，以后整理</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> bar = <span class="keyword">new</span> <span class="built_in">Object</span>()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以接收参数作为新创建对象的属性</span></span><br><span class="line"><span class="keyword">var</span> baz = <span class="built_in">Object</span>.create()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>原型的访问方式</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Foo.prototype</span><br><span class="line"><span class="built_in">Object</span>.getPrototypeOf(foo)</span><br><span class="line">Foo.__proto__</span><br></pre></td></tr></table></figure>
+<h2 id="第-2-章-函数"><a href="#第-2-章-函数" class="headerlink" title="第 2 章 函数"></a>第 2 章 函数</h2><h2 id="第-3-章-闭包"><a href="#第-3-章-闭包" class="headerlink" title="第 3 章 闭包"></a>第 3 章 闭包</h2><h2 id="第-4-章-强转"><a href="#第-4-章-强转" class="headerlink" title="第 4 章 强转"></a>第 4 章 强转</h2><ul>
+<li>JavaScript 尝试将对象转换成字符串时，首先调用 toString()方法。如果不反悔基础类型，会调用 valueOf()函数。否则抛出 Typeerror 异常。转为数字时顺序相反。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">"1"</span> + <span class="number">1</span>) <span class="comment">// "11"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"11"</span>) <span class="comment">// 11</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="keyword">new</span> <span class="built_in">Date</span>())</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>() + <span class="string">""</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>在对象的原型链上定义 toString()和 valueOf()来定义强转时使用的函数，但是会出现先调用 valueOf()的情况。原因在于内部的机制：<code>如果一个对象能够转成多个基础类型，那么会使用可选参数PreferredType来指定类型。</code>由于没有指定内部默认值（DefaultValue）函数，JS 假设你想要一个数字。</p>
+</li>
+<li><p>数组的 valueOf()方法返回一个对象。</p>
+</li>
+<li><p>‘||’默认值、!!获得 Boolean 类型</p>
+</li>
+<li><p>立即调用函数表达式，前面加上一元运算符会把函数声明转成函数表达式，可以在后面接上括号进行调用。在写类库框架的时候常常把分号前置，以防止解析器意想不到的错误。</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'这是一个函数声明'</span>)</span><br><span class="line">&#125;() <span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line">!<span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'OK'</span>)</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<ul>
+<li>>&gt;&gt;逻辑右移运算符，正负均补 0 ，详见计算机组成原理一书。</li>
+</ul>
+<p>-</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="literal">false</span> + [])[<span class="number">0</span>] === <span class="string">"f"</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>堆：堆是在内存中的顺序无关的容器，存放正在使用或未被垃圾回手清理的变量和对象的地方</li>
+<li>帧：帧是时间循环周期中需要被执行的连续工作单元。帧包含把函数对象和堆中的变量链接在一起的执行上下文。</li>
+<li>栈：事件循环栈包含了执行一个消息所需的所有连续的帧，事件循环自顶向下处理帧，有以来的帧把他们所依赖的帧添加到上面。</li>
+<li>队列：队列是等待处理的消息的列表，每条消息都引用一个函数。当栈为空时，队列中最旧的消息作为底部帧被添加到栈中。</li>
+</ul>
+<p>有关宏任务微任务可以看<a href="https://zhuanlan.zhihu.com/p/25407758" target="_blank" rel="noopener">这个</a>简单了解一下。</p>
+<h2 id="第-7-章-风格"><a href="#第-7-章-风格" class="headerlink" title="第 7 章 风格"></a>第 7 章 风格</h2><ul>
+<li>变量名、函用 camelCase，类使用 PascalCase，匈牙利命名法不是必须的，可用于表达对象是依赖于一个库或者框架构造的。</li>
+</ul>
+<h2 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h2><p><a href="http://www.ruanyifeng.com/blog/2018/07/web-worker.html" target="_blank" rel="noopener">web worker</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.432Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxt0020v8fy79mhmgo5/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reading/">Reading</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Software-Engineering/">Software Engineering</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&title=《读《JavaScript专家编程》》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&title=《读《JavaScript专家编程》》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读《JavaScript专家编程》》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxq001sv8fy9fguevym/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">深入理解 this</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxi001av8fy5k6qn8ox/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数值的表示</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&title=《读《JavaScript专家编程》》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&title=《读《JavaScript专家编程》》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《读《JavaScript专家编程》》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxt0020v8fy79mhmgo5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3ay26DQAwF0Pz/T9NtpRRybdNIzBxWVUPJHBauX69XfB2/rrPfJPe/f/r+hLNn3nBhYGA8lnFcXpMvvmYnz0/OhoGBsQ8jOcTZ/dU785eSnA0DAwMjSdfyNHH+yjAwMDB6jLzQzdNQDAwMjF4Rew2YJI5frcUxMDAeyMi77t//+V/mGxgYGI9iHMUrT/gmiWD5VBgYGEszJgVqr5Wfjw3K58HAwFiaMUnaqqE2L2Wvj3tKxcDAWJSRr3/lCdwkyPaWPDAwMNZm9Na2endWVzfyRBMDA2NVRnU02EsB86FmvgLyx38MDAyMpRl5OVptik1aaYW/wsDAWJpxV+s/TwrnyeWHYI2BgbE0o9rur44WqoXrqBbHwMBYiJGHsLyhnxeuvab/h1ocAwNjOUavHvzO8DIaVWJgYGzAyENkL9jlsFG6iYGBsTQjCaA5pspLYIUQjIGBsTEj/+LekGCyhFEIuBgYGEsw8ibavS25vDH34QwYGBgbMPLQ2UsQ80SwmSBiYGBswKi22JKStbdC0XyJGBgYGzCq22RJwZmQeoPV8iATAwPjsYyjePU2HHovKF/FwMDAWJtRDXO9oWZvkFBNFjEwMNZm5CPMaurWSwSbqxgYGBgbMO5afZgMKUehHwMDA6PVhpsE0HyBDAMDAyMfbfYCbnVcenPAxcDAeBQjKWInaxNJAL152QIDA2MhRq+J1gvQkzZcb8kDAwPj4Ywf1V2yUOzTI1oAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

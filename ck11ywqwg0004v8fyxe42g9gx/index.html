@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>LeetCode Contest 128 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="LeetCode">
+    <meta name="description" content="LeetCode Contest 128LynnScarlettRank: 1307 / 5165Finish Time: 0:14:32Score: 6 1012. Complement of Base 10 Integer1012. Complement of Base 10 Integer 翻译：非负数 N，表示成二进制形式后取反，返回该十进制表示。 思路：用最接近 N 的 2 的 i 次幂">
+<meta name="keywords" content="LeetCode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Contest 128">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="LeetCode Contest 128LynnScarlettRank: 1307 / 5165Finish Time: 0:14:32Score: 6 1012. Complement of Base 10 Integer1012. Complement of Base 10 Integer 翻译：非负数 N，表示成二进制形式后取反，返回该十进制表示。 思路：用最接近 N 的 2 的 i 次幂">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.428Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LeetCode Contest 128">
+<meta name="twitter:description" content="LeetCode Contest 128LynnScarlettRank: 1307 / 5165Finish Time: 0:14:32Score: 6 1012. Complement of Base 10 Integer1012. Complement of Base 10 Integer 翻译：非负数 N，表示成二进制形式后取反，返回该十进制表示。 思路：用最接近 N 的 2 的 i 次幂">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">LeetCode Contest 128</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">LeetCode Contest 128</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-20T01:18:54.000Z" itemprop="datePublished" class="page-time">
+  2019-03-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#LeetCode-Contest-128"><span class="post-toc-number">1.</span> <span class="post-toc-text">LeetCode Contest 128</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1012-Complement-of-Base-10-Integer"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1012. Complement of Base 10 Integer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1013-Pairs-of-Songs-With-Total-Durations-Divisible-by-60"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1013. Pairs of Songs With Total Durations Divisible by 60</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1014-Capacity-To-Ship-Packages-Within-D-Days"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">1014. Capacity To Ship Packages Within D Days</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1015-Numbers-With-Repeated-Digits"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">1015. Numbers With Repeated Digits</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-LeetCode Contest 128" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">LeetCode Contest 128</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-20 09:18:54" datetime="2019-03-20T01:18:54.000Z" itemprop="datePublished">2019-03-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Algorithm/">Algorithm</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="LeetCode-Contest-128"><a href="#LeetCode-Contest-128" class="headerlink" title="LeetCode Contest 128"></a>LeetCode Contest 128</h1><p>LynnScarlett<br>Rank: 1307 / 5165<br>Finish Time: 0:14:32<br>Score: 6</p>
+<h2 id="1012-Complement-of-Base-10-Integer"><a href="#1012-Complement-of-Base-10-Integer" class="headerlink" title="1012. Complement of Base 10 Integer"></a>1012. Complement of Base 10 Integer</h2><p><a href="https://leetcode.com/problems/complement-of-base-10-integer/" target="_blank" rel="noopener">1012. Complement of Base 10 Integer</a></p>
+<p>翻译：非负数 N，表示成二进制形式后取反，返回该十进制表示。</p>
+<p>思路：用最接近 N 的 2 的 i 次幂-1，减 N。如：<code>101 = 111 - 010</code></p>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; N</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> bitwiseComplement = <span class="function"><span class="keyword">function</span>(<span class="params">N</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> i = <span class="number">1</span></span><br><span class="line">  <span class="keyword">while</span> (N &gt; <span class="number">2</span> ** i - <span class="number">1</span>) &#123;</span><br><span class="line">    i++</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">2</span> ** i - <span class="number">1</span> - N</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1013-Pairs-of-Songs-With-Total-Durations-Divisible-by-60"><a href="#1013-Pairs-of-Songs-With-Total-Durations-Divisible-by-60" class="headerlink" title="1013. Pairs of Songs With Total Durations Divisible by 60"></a>1013. Pairs of Songs With Total Durations Divisible by 60</h2><p><a href="https://leetcode.com/problems/pairs-of-songs-with-total-durations-divisible-by-60/" target="_blank" rel="noopener">1013. Pairs of Songs With Total Durations Divisible by 60</a></p>
+<p>翻译：一个数组中求两个元素相加能被 60 整除的数量。</p>
+<p>思路：暴力遍历</p>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; time</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> numPairsDivisibleBy60 = <span class="function"><span class="keyword">function</span>(<span class="params">time</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; time.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; time.length; j++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i === j) &#123;</span><br><span class="line">        <span class="keyword">continue</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> ((time[i] + time[j]) % <span class="number">60</span> === <span class="number">0</span>) &#123;</span><br><span class="line">        res++</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1014-Capacity-To-Ship-Packages-Within-D-Days"><a href="#1014-Capacity-To-Ship-Packages-Within-D-Days" class="headerlink" title="1014. Capacity To Ship Packages Within D Days"></a>1014. Capacity To Ship Packages Within D Days</h2><p><a href="https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/" target="_blank" rel="noopener">1014. Capacity To Ship Packages Within D Days</a></p>
+<p>翻译： 有一个货物重量数组，要求在 D 天内运送完毕，从传送带一侧到另一侧需要用一天时间，求传送带最少需要支撑的重量</p>
+<p>思路：遍历，从最大的货物重量，到货物总重量，进行二分查找</p>
+<p>实现：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;number[]&#125; weights</span></span><br><span class="line"><span class="comment"> * @param &#123;number&#125; D</span></span><br><span class="line"><span class="comment"> * @return &#123;number&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> shipWithinDays = <span class="function"><span class="keyword">function</span>(<span class="params">weights, D</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> max = weights.reduce(<span class="function">(<span class="params">x, y</span>) =&gt;</span> x + y)</span><br><span class="line">  <span class="keyword">let</span> min = <span class="built_in">Math</span>.max(...weights)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">binarySearch</span>(<span class="params">start, end</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> mid = <span class="built_in">Math</span>.floor((start + end) / <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">let</span> total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">let</span> day = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; weights.length; i++) &#123;</span><br><span class="line">      <span class="keyword">if</span> (total + weights[i] &lt;= mid) &#123;</span><br><span class="line">        total += weights[i]</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        i--</span><br><span class="line">        day++</span><br><span class="line">        <span class="keyword">if</span> (day &gt; D) &#123;</span><br><span class="line">          <span class="keyword">if</span> (start === end) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">          <span class="keyword">return</span> binarySearch(mid + <span class="number">1</span>, end)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (start === end) <span class="keyword">return</span> start</span><br><span class="line">    <span class="keyword">return</span> binarySearch(start, mid)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> binarySearch(min, max)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1015-Numbers-With-Repeated-Digits"><a href="#1015-Numbers-With-Repeated-Digits" class="headerlink" title="1015. Numbers With Repeated Digits"></a>1015. Numbers With Repeated Digits</h2><p><a href="https://leetcode.com/problems/numbers-with-repeated-digits/" target="_blank" rel="noopener">1015. Numbers With Repeated Digits</a></p>
+<p>翻译：求不大于 N 的正整数中，含有相同数字的数的个数</p>
+<p>思路：</p>
+<ol>
+<li>遍历（超时）</li>
+<li>排列组合，详见：<a href="https://leetcode.com/problems/numbers-with-repeated-digits/discuss/257281/Java-O%281%29-0ms-beats-all" target="_blank" rel="noopener">discuss</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.428Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqwg0004v8fyxe42g9gx/" target="_blank" rel="external">http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/">LeetCode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&title=《LeetCode Contest 128》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&title=《LeetCode Contest 128》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Contest 128》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqwj0006v8fyn9bzp7o6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一些手写代码题（前端）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&title=《LeetCode Contest 128》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&title=《LeetCode Contest 128》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《LeetCode Contest 128》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqwg0004v8fyxe42g9gx/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3ay4rjMBAF0Pz/T2e2A4PFvapkINLxqjFuR8eLol6vV3y9H67k+b/vPL3t3/99fePCwMD4WcZ7ea2PtSYlb1i/LTkbBgbGPYzkEHuHawP3+g2P9zEwMDD2Xj0IzRgYGBhzRps+tmkoBgYGxl4RmwfWSYr59VocAwPjBxl51/3///2V+QYGBsZPMd7ltU7OPpUI1qfCwMA4mpEHuHbNol2/WCeXURqKgYFxDWO+TpGMKtuBaLQ6hoGBcSgjb/HnK1/5Kka7cPaIwcDAOJqRpIbrkNcugeW/WA8hMDAwDmXkR8wP2iZ2ewPRx9QQAwPjOMbeysXeAkTbSktaeBgYGPcw2kA5HyRMPsFjsMbAwLiMMUn7knZ/27z7WJ6LgYHxs4z5SLJN7z67tIGBgXEnIy9c2/e0z9S1OAYGxgWMefDNA+UEmZfTGBgYZzAmBeReS25z8Wt9HwMD42LGvCidDACKRQ0MDIyjGcl44LNl6iStLNbCMDAwDmLkoW3SrM+L0r1BKQYGxg2M5Oht8tcOFRJY0W7DwMA4jjFZpMhHC21SWPw6BgbGoYx3eeWJ4yStrKkYGBhHM/bWxdqh46eez1uBGBgY5zGSIPu9gLv3yYoiFgMD4yBGUoK2ixTzkUNxKgwMDIxBMbkXQNcf5bHphoGBgbG1NjFZNUtachgYGPcwkiJ27+jt0lgS0DEwMG5jTErHvSZ+uyKWp48YGBjHMf4ADSdBz84aCC0AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

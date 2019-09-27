@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>工作心得#第贰周 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Dev">
+    <meta name="description" content="箭头函数的使用箭头函数和 function 命名的函数区别主要在于 this 的指向。function 函数的 this 值和执行环境有关，箭头函数的 this 值在定义时就确定。如下图 downloadJson 和 themeJson 都取不到，会报错。 12345678910111213141516171819202122232425data()&amp;#123;    return &amp;#123;">
+<meta name="keywords" content="Dev">
+<meta property="og:type" content="article">
+<meta property="og:title" content="工作心得#第贰周">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="箭头函数的使用箭头函数和 function 命名的函数区别主要在于 this 的指向。function 函数的 this 值和执行环境有关，箭头函数的 this 值在定义时就确定。如下图 downloadJson 和 themeJson 都取不到，会报错。 12345678910111213141516171819202122232425data()&amp;#123;    return &amp;#123;">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="工作心得#第贰周">
+<meta name="twitter:description" content="箭头函数的使用箭头函数和 function 命名的函数区别主要在于 this 的指向。function 函数的 this 值和执行环境有关，箭头函数的 this 值在定义时就确定。如下图 downloadJson 和 themeJson 都取不到，会报错。 12345678910111213141516171819202122232425data()&amp;#123;    return &amp;#123;">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">工作心得#第贰周</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">工作心得#第贰周</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-15T10:43:11.000Z" itemprop="datePublished" class="page-time">
+  2018-07-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#箭头函数的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">箭头函数的使用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#map-reduce"><span class="post-toc-number">2.</span> <span class="post-toc-text">map()/reduce()</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#veitical-align"><span class="post-toc-number">3.</span> <span class="post-toc-text">veitical-align</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-工作心得-第贰周" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">工作心得#第贰周</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-15 18:43:11" datetime="2018-07-15T10:43:11.000Z" itemprop="datePublished">2018-07-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Coding/">Coding</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="箭头函数的使用"><a href="#箭头函数的使用" class="headerlink" title="箭头函数的使用"></a>箭头函数的使用</h1><p>箭头函数和 function 命名的函数区别主要在于 this 的指向。function 函数的 this 值和执行环境有关，箭头函数的 this 值在定义时就确定。<br>如下图 downloadJson 和 themeJson 都取不到，会报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">data()&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.downloadJson,</span><br><span class="line">        <span class="keyword">this</span>.themeJson</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">methods:&#123;</span><br><span class="line">    <span class="keyword">let</span> option =&#123;</span><br><span class="line">        title: [&#123;</span><br><span class="line">            subtext: <span class="string">'总计 '</span> + <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.downloadJson).reduce(<span class="function"><span class="keyword">function</span> (<span class="params">all, key</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> all + <span class="keyword">this</span>.downloadJson[key];</span><br><span class="line">            &#125;, <span class="number">0</span>),</span><br><span class="line">            x: <span class="string">'75%'</span>,</span><br><span class="line">            textAlign: <span class="string">'center'</span></span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            text: <span class="string">'主题下载'</span>,</span><br><span class="line">            subtext: <span class="string">'总计 '</span> + <span class="built_in">Object</span>.keys(<span class="keyword">this</span>.themeJson).reduce(<span class="function"><span class="keyword">function</span> (<span class="params">all, key</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> all + <span class="keyword">this</span>.themeJson[key];</span><br><span class="line">            &#125;, <span class="number">0</span>),</span><br><span class="line">            x: <span class="string">'75%'</span>,</span><br><span class="line">            y: <span class="string">'50%'</span>,</span><br><span class="line">            textAlign: <span class="string">'center'</span></span><br><span class="line">        &#125;],</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="map-reduce"><a href="#map-reduce" class="headerlink" title="map()/reduce()"></a>map()/reduce()</h1><p>具体可以看以下博客</p>
+<p><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001435119854495d29b9b3d7028477a96ed74db95032675000" target="_blank" rel="noopener">map/reduce 廖雪峰的博客</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">map/reduce MDN Docs</a></p>
+<p>简单来说 map()方法就是依次将数组内所有值执行一个过程（函数），返回值仍然是数组，比如每个元素加 1。</p>
+<p>reduce()方法就是讲所有的元素执行一个过程后返回一个值比如求和。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 不用parseInt和Number转数字</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> string2int = <span class="function"><span class="params">s</span>=&gt;</span>s.split(<span class="string">""</span>).map(<span class="function"><span class="params">x</span>=&gt;</span>+x).reduce(<span class="function">(<span class="params">x,y</span>)=&gt;</span>(x*<span class="number">10</span>+y))</span><br></pre></td></tr></table></figure>
+<h1 id="veitical-align"><a href="#veitical-align" class="headerlink" title="veitical-align"></a>veitical-align</h1><p>这个地方感觉坑很多，这周的工作中由于用到了很多 inline 的横向布局，在文字和图片混排的过程中 vertival-align 的变动很大。<br>还没有研究明白，日后再填坑。</p>
+<p>参考链接:<a href="http://christopheraue.net/design/vertical-align" target="_blank" rel="noopener">vertical-align</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.430Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqxh0018v8fynu80j1va/" target="_blank" rel="external">http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dev/">Dev</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&title=《工作心得#第贰周》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&title=《工作心得#第贰周》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《工作心得#第贰周》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqxy002bv8fygxmizeen/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">读《构建之法：现代软件工程》 #1</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxs001xv8fyoef7cej2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">网易游戏电话面试</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&title=《工作心得#第贰周》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&title=《工作心得#第贰周》 — 用代码做画笔&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《工作心得#第贰周》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqxh0018v8fynu80j1va/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJUlEQVR42u3a0WrDMAwF0Pz/T2evg67plZQV7Bw/jeA4Ph0IyfJxxON8Ga/P383//eR6tdeZNw8MDIxlGeflSBjXK09gyd4wMDCew0g2cddbecBNvoKBgYEx2VCSCF5/CwMDA+MuRu9Jkm5iYGBg9JauhtRki1+txTEwMBZk5Kfu3//7X/obGBgYSzHO4sipk0SwvCsMDIytGXmA6x2W5dcvkq98mImBgbEpoxrsqilj9UCteu3s6MVsDAyMpRjz8NprFeRv9S58YGBg7M3IWwJ5WLy3zRAlkRgYGJsyqq/1rl9Mit7m/wEDA2NxRnK8lTca8zDaazAck6UxMDCWZcwDbn6Rq9rabKaYGBgYWzPubQ8kCWK1JG7muRgYGIszvnO4llN77QcMDIwnMPLkr3o5o3c8lzdNMTAwnsDIW4a96xSTmdXVMDAwdmVUE7i8bZCnd9WU8Y/nGBgYWzPyqw95+MtbCL0c7+1uMTAwtmb0tlhtZ+bgvF1xwy+NgYGxCCNPv6qtzfxwrVBz53kuBgbGdoxeMtcLr9VGadJUwMDAeCajd6w2KXSrIbsQ0TEwMJZlnMUxL3GrbdGIioGBsTUjH72PVUN5Hr6bMAwMjGUZkyCbNwbyX663BwwMjCcwJle+8mK1d/msUMpiYGBgDJK/eRKJgYGB0WNUt97bYtQKxcDAeACjerjfK3F75WsExsDA2JqRl46T+dVjuF5pjYGBsR3jB8FsGQYlfMk3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

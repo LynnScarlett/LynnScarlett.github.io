@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>跨域和CORS | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="跨域">
+    <meta name="description" content="跨域和CORS最近的一个项目在对接的时候，会报出以下错误：  OPTIONS * 401()Failed to load *: Response to preflight request doesn’t pass access conreol check : No ‘Access-Conrtrl-Allow-Origin’ header is present on the requested re">
+<meta name="keywords" content="跨域">
+<meta property="og:type" content="article">
+<meta property="og:title" content="跨域和CORS">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="跨域和CORS最近的一个项目在对接的时候，会报出以下错误：  OPTIONS * 401()Failed to load *: Response to preflight request doesn’t pass access conreol check : No ‘Access-Conrtrl-Allow-Origin’ header is present on the requested re">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="跨域和CORS">
+<meta name="twitter:description" content="跨域和CORS最近的一个项目在对接的时候，会报出以下错误：  OPTIONS * 401()Failed to load *: Response to preflight request doesn’t pass access conreol check : No ‘Access-Conrtrl-Allow-Origin’ header is present on the requested re">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">跨域和CORS</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">跨域和CORS</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-02T09:50:21.000Z" itemprop="datePublished" class="page-time">
+  2018-09-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#跨域和CORS"><span class="post-toc-number">1.</span> <span class="post-toc-text">跨域和CORS</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#同源策略"><span class="post-toc-number">2.</span> <span class="post-toc-text">同源策略</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CORS"><span class="post-toc-number">3.</span> <span class="post-toc-text">CORS</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#简单请求"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">简单请求</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#非简单请求"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">非简单请求</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考资料"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考资料</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-跨域和CORS" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">跨域和CORS</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-02 17:50:21" datetime="2018-09-02T09:50:21.000Z" itemprop="datePublished">2018-09-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/JavaScript/">JavaScript</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="跨域和CORS"><a href="#跨域和CORS" class="headerlink" title="跨域和CORS"></a>跨域和CORS</h1><p>最近的一个项目在对接的时候，会报出以下错误：</p>
+<blockquote>
+<font color="red">OPTIONS <strong>*</strong> 401()</font><br><font color="red">Failed to load <strong>*</strong>: Response to preflight request doesn’t pass access conreol check : No ‘Access-Conrtrl-Allow-Origin’ header is present on the requested resoutce. Origin ‘<a href="http://localhost:10001&#39;" target="_blank" rel="noopener">http://localhost:10001&#39;</a> is not allowed access.</font>
+</blockquote>
+<p>直译过来是 OPTIONS 请求错误，response 的 header 里面没有 ‘Access-Conrtrl-Allow-Origin’字段。</p>
+<p>如果在开发过程中看到这个错误的话就可以直接截图给后端让他改了（虽然产生原因在浏览器……</p>
+<a id="more"></a>
+<h1 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略"></a>同源策略</h1><p>同源是指三个相同：</p>
+<ul>
+<li>协议</li>
+<li>域名</li>
+<li>端口</li>
+</ul>
+<p>如果这三个中间有任何一个不相同，则称之为不同源。<br>在浏览器中，如果源地址和目标地址不同源，则以下三种行为会受到同源策略限制：</p>
+<ul>
+<li>Cookie、LocalStorage 和 IndexDB 读取</li>
+<li>Dom 获取</li>
+<li>AJAX 请求</li>
+</ul>
+<h1 id="CORS"><a href="#CORS" class="headerlink" title="CORS"></a>CORS</h1><p>但是在平时的开发过程中，本地使用的服务器是 127.0.0.1，当然和后端的服务器不同源。这时候就不可避免地进行跨域请求。<br>目前在浏览器中对不同源的目标发送 XMLHttpRequest 或者 fetch 都会自动地进行 CORS（Cross-Origin-Resource-Share, 跨域资源共享)，用户和开发者使用起来和正常请求没有差别。</p>
+<h2 id="简单请求"><a href="#简单请求" class="headerlink" title="简单请求"></a>简单请求</h2><p>上面的错误就是 CORS 的其中一个过程，如果将要发出的跨域请求满足以下条件，那么就属于 CORS 定义下的“简单请求”：</p>
+<ol>
+<li><p>请求方法是以下三种方法之一：</p>
+<ul>
+<li>HEAD</li>
+<li>GET</li>
+<li>POST</li>
+</ul>
+</li>
+<li><p>HTTP 的头信息不超出以下几种字段：</p>
+<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Last-Event-ID</li>
+<li>Content-Type：只限于三个值 application/x-www-form-urlencoded、multipart/form-data、text/plain</li>
+</ul>
+</li>
+</ol>
+<p>简单请求和普通的请求区别是会在头部加上一个 Origin 字段，如果指定的源不在许可的范围内，就不会返回一个包含’Access-Control-Allow-Origin’的字段，浏览器会报出上面的第二个错误。</p>
+<h2 id="非简单请求"><a href="#非简单请求" class="headerlink" title="非简单请求"></a>非简单请求</h2><p>上面的第一个错误：OPTIONS 401()，显示是 OPTIONS 方法的请求返回了一个 Unauthorized 状态码。<br>如果浏览器发出的跨域请求时非简单请求，那么就会先发出一个”preflight”(预检请求)，来检验源是否在服务器允许 CORS 的源列表内，如果返回的头部包含 Access-Control-Allow-Origin 字段而且值包含该源，那么浏览器会正常发出该请求。</p>
+<p>那么现在错误原因已经很清晰了，首先由于 127.0.0.1 和服务器”不同源”，浏览器自动执行 CORS，非简单请求先发出 OPTIONS 预检，服务器返回的头部没有 Access-Control-Allow-Origin 字段，因此 options 报 401 错误。</p>
+<p>解决办法：截图给后端（设置一下 Access-Control-Allow-Origin 添加 127.0.0.1 或者*（通配符）</p>
+<p>有关于跨域的其他解决方案 JSONP、WebSocket，OPTIONS 请求返回的其他头部字段，请继续阅读参考资料中的博文。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><ol>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Access_control_CORS" target="_blank" rel="noopener">HTTP 访问控制（CORS）—— MDN</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/same-origin-policy.html" target="_blank" rel="noopener">浏览器的同源策略——ruanyifeng</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">跨域资源共享 CORS 详解</a></li>
+<li><a href="https://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81" target="_blank" rel="noopener">HTTP 状态码——Wikipedia</a></li>
+</ol>
+<p><small>朱耀华_20180902</small></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.434Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqy2002jv8fyevwq93vy/" target="_blank" rel="external">http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨域/">跨域</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&title=《跨域和CORS》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&title=《跨域和CORS》 — 用代码做画笔&source=跨域和CORS最近的一个项目在对接的时候，会报出以下错误：
+
+OPTIONS * 401()Failed to load *: Response to p..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跨域和CORS》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqx7000zv8fym906eg5e/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">一个栗子引发的思考</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqxq001sv8fy9fguevym/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深入理解 this</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&title=《跨域和CORS》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&title=《跨域和CORS》 — 用代码做画笔&source=跨域和CORS最近的一个项目在对接的时候，会报出以下错误：
+
+OPTIONS * 401()Failed to load *: Response to p..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《跨域和CORS》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqy2002jv8fyevwq93vy/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3aUW7DMAwE0dz/0u4BDFuzZBpA1OirQB1VzwFYUuTng9d1W/ffPj1/fybd7WtLhgwZ2zKu1/X+zPsfftqBw8jZZMiQcQ6DHIIfiARiEnDJ2WTIkCGDMMg+j4EyfBEyZMiQ0WeQ0MwTTRkyZMiobZ2GXZ5E/qgWlyFDxoYMfuv++5//pb8hQ4aMrRhXuNIGZy0RjE8lQ4aM0Qwe4PrjEZ10k+wmQ4aMqYzaaEXankxbnnETQoYMGQcw0iSvNkzGg2x65SdDhowTGOjRsJGQHgjlsCQ1lCFDxjgGufrnAxa1xI7jUaErQ4aMoQx+Wc+HKtIA+oVPyZAhYyijv2maFNaSy8XrliFDxmhG/0KfX5ORcJy2JWTIkHECI03XrnDx0MnzvcX3IEOGjHEMPvrQaRikzctilSpDhowDGHy7TgPg/ZWlPy/+e8iQIWMcoz/sxZO/WpG8CMEyZMgYyqhd6JMn+Z48uXwMwTJkyBjNqBWltcDaL3TR65AhQ8ZQBlGmAxa14bN0ymvRiZUhQ8ZQRv+aLC2Ja6lnfGsoQ4aMQYz4wzhcpklhMGYhQ4aM0YwrXB+80iBLQm3xe5AhQ8bmjNqx0mfIhRofU4vHxWTIkDGCwRsA6WhFLWTzM8QZrgwZMjZnkMuvWhuAD220Qr8MGTJkhAMWtQDKS1YZMmTI6F/384CblsGLFqYMGTJGM0gRS8pXXuKmCaUMGTJOZvDSsVamvieCteZoq78hQ4aMnRh/eV5/rRjm4fkAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

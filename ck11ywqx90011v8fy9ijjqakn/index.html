@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+<!-- Google Analytics -->
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'true', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+<!-- End Google Analytics -->
+
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    <meta name="google-site-verification" content="UA-100496831-2">
+    
+    
+    
+    
+    <title>从零开始node（一）：模块机制 | 用代码做画笔 | 童言无忌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content>
+    <meta name="description" content="从零开始 node（一）：模块机制朱耀华  之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。 这次从头开始阅读《深入浅出 Node.js》，也许这本书比较久远了，但是比较重视原理层面，适合仔细阅读。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始node（一）：模块机制">
+<meta property="og:url" content="http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/index.html">
+<meta property="og:site_name" content="用代码做画笔">
+<meta property="og:description" content="从零开始 node（一）：模块机制朱耀华  之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。 这次从头开始阅读《深入浅出 Node.js》，也许这本书比较久远了，但是比较重视原理层面，适合仔细阅读。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-27T10:03:18.429Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="从零开始node（一）：模块机制">
+<meta name="twitter:description" content="从零开始 node（一）：模块机制朱耀华  之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。 这次从头开始阅读《深入浅出 Node.js》，也许这本书比较久远了，但是比较重视原理层面，适合仔细阅读。">
+    
+        <link rel="alternate" type="application/atom+xml" title="用代码做画笔" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">朱童</h5>
+          <a href="mailto:buaa.zyh@gmail.com" title="buaa.zyh@gmail.com" class="mail">buaa.zyh@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/LynnScarlett" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">从零开始node（一）：模块机制</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">从零开始node（一）：模块机制</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-09T11:18:10.000Z" itemprop="datePublished" class="page-time">
+  2018-10-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#从零开始-node（一）：模块机制"><span class="post-toc-number">1.</span> <span class="post-toc-text">从零开始 node（一）：模块机制</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#路径分析"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">路径分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#文件定位"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">文件定位</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模块编译"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">模块编译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JavaScript-模块的编译"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">JavaScript 模块的编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#C-C-模块的编译"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">C/C++模块的编译</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#JSON-文件的编译"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">JSON 文件的编译</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-从零开始 node（一）：模块机制" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">从零开始node（一）：模块机制</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-09 19:18:10" datetime="2018-10-09T11:18:10.000Z" itemprop="datePublished">2018-10-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/node/">node</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="从零开始-node（一）：模块机制"><a href="#从零开始-node（一）：模块机制" class="headerlink" title="从零开始 node（一）：模块机制"></a>从零开始 node（一）：模块机制</h1><blockquote class="blockquote-center">朱耀华</blockquote>
+
+<p>之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。</p>
+<p>这次从头开始阅读<a href="https://www.amazon.cn/dp/B00GOM5IL4" target="_blank" rel="noopener">《深入浅出 Node.js》</a>，也许这本书比较久远了，但是比较重视原理层面，适合仔细阅读。</p>
+<a id="more"></a>
+<p>node 中引入模块，需要经历三个步骤</p>
+<ol>
+<li>路径分析</li>
+<li>文件定位</li>
+<li>编译执行</li>
+</ol>
+<p>在 Node 中，模块分为两类：<code>核心模块</code>和<code>文件模块</code>。</p>
+<p>核心模块是 node 提供的模块，在 node 源代码编译的过程中，编译进了二进制执行文件。在 node 进程启动时，部分核心模块就被直接加在今内存中，所以这部分核心模块引入时，文件定位和编译执行这两个步骤可以省略掉。核心模块的加载速度是最快的。</p>
+<p>文件模块是用户编写的模块在运行时动态加载，需要完整的路径分析、文件定位、编译执行过程。</p>
+<p>require()方法对相同模块的二次加载采用缓存优先的方式。</p>
+<h2 id="路径分析"><a href="#路径分析" class="headerlink" title="路径分析"></a>路径分析</h2><p>require()的参数——模块标识符分为以下几类</p>
+<ul>
+<li>核心模块，如 http、fs</li>
+<li>相对路径/绝对路径的文件模块</li>
+<li>自定义的文件模块</li>
+</ul>
+<p>自定义的文件模块查找策略是：</p>
+<ul>
+<li>当前文件目录下的 node_modules</li>
+<li>父目录下的 node_modules</li>
+<li>逐级递归，知道根目录下的 node_modules</li>
+</ul>
+<h2 id="文件定位"><a href="#文件定位" class="headerlink" title="文件定位"></a>文件定位</h2><p>Node 会按照.js .json .node 的顺序给模块标识符添加扩展名，在文件定位的过程中是同步阻塞的，所以为标识符带上扩展名会加快速度。</p>
+<p>有时候文件定位后得到一个目录，这时首先查找 package.json，从中取出 main 属性指定文件名定位。以上步骤失败则会把 index.js index.json index.node 作为默认文件名。</p>
+<h2 id="模块编译"><a href="#模块编译" class="headerlink" title="模块编译"></a>模块编译</h2><p>对于不同的文件扩展名，其载入方法也不同。</p>
+<ul>
+<li>js 文件：通过 fs 模块同步读取文件后编译执行</li>
+<li>node 文件：这是用 C/C++编写扩展文件，用 dlopen()方法加载最后编译生成的文件</li>
+<li>json 文件：fs 同步读取后，JSON.parse()解析结果</li>
+</ul>
+<p>编译成功的模块会将其文件路径作为索引缓存在 Module._cache 上。</p>
+<h3 id="JavaScript-模块的编译"><a href="#JavaScript-模块的编译" class="headerlink" title="JavaScript 模块的编译"></a>JavaScript 模块的编译</h3><p>在编译的过程中，Node 对 JavaScript 文件内容进行了头尾包装，一个正常的 JavaScript 文件包装成如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">;(<span class="function"><span class="keyword">function</span>(<span class="params">exports, require, module, __filename, __dirname</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> math = <span class="built_in">require</span>(<span class="string">"math"</span>)</span><br><span class="line">  exports.area = <span class="function"><span class="keyword">function</span>(<span class="params">radius</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.PI * radius * radius</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>CommonJS 规范中存在着 require、exports、module、__filename、__dirname 这几个变量存在，就是由此而来，同事还对每个模块文件之间进行了作用域隔离。</p>
+<p>*关于 exports 和 module.exports，exports 是对 module.exports 的引用，所以直接对 exports 赋值会造成指针丢失，并不会导出模块。</p>
+<h3 id="C-C-模块的编译"><a href="#C-C-模块的编译" class="headerlink" title="C/C++模块的编译"></a>C/C++模块的编译</h3><p>node 文件是 C/C++编写编译后生成的，所以这一部分只有加载和执行，执行效率较高。</p>
+<p>dlopen()方法在 windows 和*nix 平台有不同的实现，通过 libuv 兼容层进行封装。</p>
+<h3 id="JSON-文件的编译"><a href="#JSON-文件的编译" class="headerlink" title="JSON 文件的编译"></a>JSON 文件的编译</h3><p>读取到内容之后，调用 JSON.parse()得到对象，将其赋给 exports。</p>
+<p>内建模块：使用 C/C++编写，主要供其他模块使用的模块，比如 fs 模块。JavaScript 核心模块主要扮演的职责有两类：一类是作为 C/C++内建模块的封装层和桥接层，<br>供文件模块调用；一类是纯粹的功能模块，它不需要跟底层打交道，但是又十分重要。</p>
+<p>扩展模块：用户使用 C/C++编写的模块</p>
+<p>*有关内建模块和扩展模块的编译和加载以后再讨论……</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-09-27T10:03:18.429Z" itemprop="dateUpdated">2019-09-27 18:03:18</time>
+</span><br>
+
+
+        
+        <a href="/ck11ywqx90011v8fy9ijjqakn/" target="_blank" rel="external">http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://lynnjs.com">
+            <img src="/img/avatar.jpg" alt="朱童">
+            朱童
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&title=《从零开始node（一）：模块机制》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&title=《从零开始node（一）：模块机制》 — 用代码做画笔&source=从零开始 node（一）：模块机制朱耀华
+
+之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《从零开始node（一）：模块机制》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/ck11ywqyo003qv8fy4481mc40/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">从零开始 node（二）：Event Loop</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/ck11ywqx7000zv8fym906eg5e/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">一个栗子引发的思考</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>朱童 &copy; 2015 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-100496831-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-100496831-1');
+    </script>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&title=《从零开始node（一）：模块机制》 — 用代码做画笔&pic=http://lynnjs.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&title=《从零开始node（一）：模块机制》 — 用代码做画笔&source=从零开始 node（一）：模块机制朱耀华
+
+之前粗略的阅读过《nodejs 权威指南》，但是这本书有点类似于字典或者文档，比较重视核心模块和接口的使用。
+..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《从零开始node（一）：模块机制》 — 用代码做画笔&url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/&via=http://lynnjs.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://lynnjs.com/ck11ywqx90011v8fy9ijjqakn/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aS27jMBAFwNz/0g4wW0PKe005GVHFlZEIFEuLRn/49RWv17/1/vv9maMn3/97tNvR/hcsDAyM2zJep+v8EO0O50c/f+/RMxgYGM9hJEH2/AX5EVd2O/w7BgYGRhxq27Qv+VgYGBgYM8Ys1ZuVvhgYGBhtCXp+iPYT/EEtjoGBcUPGymDg079/ab6BgYHxHzNe5VoPgnmALk6FgYGxNWPWlD9/2azozUNtkeFiYGBsxMjLyFkSme/8kaYbBgbGzRmzw81C4cqQ4AceBgbG1oy8aMxD6ueCcl3EYmBgbMGYlZ1t8D3fZ2X8iYGB8QRGkvzNmv55mM4TxKJ3iIGBsSmjPUp7xPaZlb9jYGDsxFjfOik72yZdfb0DAwPjAYz2wsTKRYocVtfiGBgYmzKSpC0fPbYDgHxIEH1QDAyMTRltaGu/UDsYSBgXjDAxMDBuxZi1utrRZsubXQHBwMDYm1EPCEcJYjvCvGAGi4GBsREjCaP5tbAixsfhO28IYmBg7MdICsX2oCtF7PCDYmBgPIyRF5NJidumicPgi4GBsTUjvxKRb5TssLIwMDCexniVq23Szfavk04MDIytGbOm/2y72TAgL3ExMDD2ZrRBMAmys1QvTz0xMDCeybjq0sNsMJDjo2sWGBgYD2YkgTUJ1sn4oT4DBgYGxkJr7KprZz80ATEwMB7AmDXri9fEqV47YMDAwHgCYzYYyFv57SWMa4teDAyMmzO+AUl+POJI31rrAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>
